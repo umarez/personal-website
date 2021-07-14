@@ -1,8 +1,15 @@
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
 import { project } from "../component/Project";
+import { useRef } from "react";
+import Link from "next/link";
 
 export default function Home() {
+  const aboutRef = useRef<null | HTMLDivElement>(null);
+  const projectRef = useRef<null | HTMLDivElement>(null);
+  const connectRef = useRef<null | HTMLDivElement>(null);
+  const experienceRef = useRef<null | HTMLDivElement>(null);
+
   return (
     <>
       <div
@@ -28,26 +35,44 @@ export default function Home() {
             </h1>
           </div>
           <div className='flex-col translate-y-16 items-center lg:translate-y-40 w-full flex md:flex-row justify-center'>
-            <button className='w-32 h-8 lg:w-48 lg:h-14 bg-button text-[#F2ECEC] shadow-shad mb-5 md:mb-0 md:mr-[5.25rem] hover:bg-buttonHover'>
+            <button
+              onClick={() => {
+                aboutRef.current?.scrollIntoView();
+              }}
+              className='w-32 h-8 lg:w-48 lg:h-14 bg-button text-[#F2ECEC] shadow-shad mb-5 md:mb-0 md:mr-[5.25rem] hover:bg-buttonHover'
+            >
               <h1>About Me</h1>
             </button>
-            <button className='w-32 h-8 lg:w-48 lg:h-14 bg-button text-[#F2ECEC] shadow-shad hover:bg-buttonHover'>
+            <button
+              onClick={() => {
+                projectRef.current?.scrollIntoView();
+              }}
+              className='w-32 h-8 lg:w-48 lg:h-14 bg-button text-[#F2ECEC] shadow-shad hover:bg-buttonHover'
+            >
               Projects
             </button>
-            <button className='w-32 h-8 lg:w-48 lg:h-14 bg-button text-[#F2ECEC] shadow-shad mt-5 md:mt-0 md:ml-[5.25rem] hover:bg-buttonHover'>
+            <button
+              onClick={() => {
+                connectRef.current?.scrollIntoView();
+              }}
+              className='w-32 h-8 lg:w-48 lg:h-14 bg-button text-[#F2ECEC] shadow-shad mt-5 md:mt-0 md:ml-[5.25rem] hover:bg-buttonHover'
+            >
               Contact Me
             </button>
           </div>
         </div>
       </div>
       <div
-        className='w-[100vw] min-h-[100vh] relative px-5 lg:px-32'
+        className='w-[100vw] min-h-[100vh] relative px-5 lg:px-32 '
         style={{
           background:
             "linear-gradient(180deg, rgba(19, 31, 48, 0.96) 0%, rgba(37, 37, 37, 1) 100%)",
         }}
       >
-        <div className='pt-12  text-[#B7B6B6] '>
+        <div
+          ref={aboutRef}
+          className='w-full pt-12  text-[#B7B6B6] 2xl:container 2xl:mx-auto '
+        >
           <h1 className='w-full text-center text-[#D9D9DB] text-3xl md:text-4xl mb-10'>
             About Me
           </h1>
@@ -56,7 +81,7 @@ export default function Home() {
               <Image className='' layout='fill' alt='me' src='/me.svg' />
             </div>
           </div>
-          <div className='w-full flex flex-col items-center mt-12 mb-20 md:mb-32'>
+          <div className='max-w-screen-2xl flex flex-col items-center mt-12 mb-20 md:mb-32'>
             <h1 className=' lg:leading-9 lg:text-xl'>
               Hello, I&apos;m Umar Izzuddin! Universitas Indonesia Computer
               Science&apos;s student who passionate about IT Development.
@@ -80,7 +105,12 @@ export default function Home() {
             </div>
           </div>
           <div className='flex justify-center items-center  md:hidden pl-3 '>
-            <div className='cursor-pointer flex items-center'>
+            <div
+              onClick={() => {
+                experienceRef.current?.scrollIntoView();
+              }}
+              className='cursor-pointer flex items-center'
+            >
               <h1 className='mr-2  font-semibold'>See my experiences</h1>
               <div className='pt-1'>
                 <Image src='/arrow.svg' width={14} height={14} />
@@ -90,6 +120,7 @@ export default function Home() {
         </div>
       </div>
       <div
+        ref={experienceRef}
         style={{ backgroundColor: "#252525" }}
         className='w-full min-h-[100vh]'
       >
@@ -99,7 +130,7 @@ export default function Home() {
         <div>
           <div className='flex flex-col'>
             <div className='flex flex-col items-center'>
-              <h1 className='text-center text-xl text-experience pb-2'>
+              <h1 className='text-center text-xl 2xl:text-2xl text-experience pb-2'>
                 Organizational
               </h1>
               <span
@@ -107,7 +138,7 @@ export default function Home() {
                   background:
                     "linear-gradient(180deg, #425F65 54.78%, rgba(100, 113, 151, 0.74) 154.78%)",
                 }}
-                className='w-32 h-2 shadow-md'
+                className='w-32 2xl:w-44 h-2 shadow-md'
               />
               <div className='flex pt-5 text'>
                 <span className='bg-white w-1 mx-5 ' />
@@ -115,10 +146,10 @@ export default function Home() {
                   <Image src='/dot.svg' width={28} height={28} />
                 </div>
                 <div className='flex-col'>
-                  <h1 className='text-white pb-2'>
+                  <h1 className='text-white 2xl:text-xl pb-2'>
                     CS UI Executive Student Council 2021 (BEM Fasilkom UI)
                   </h1>
-                  <h1 className='text-sm text-alternate'>
+                  <h1 className='text-sm 2xl:text-base text-alternate'>
                     Staff of Project Development Division (Bismit), working on
                     various web development project requested from
                     inside/outside of campus
@@ -127,9 +158,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className='pt-10'>
+            <div className='pt-10 xl:pt-20'>
               <div className='flex flex-col items-center'>
-                <h1 className='text-center text-xl text-experience pb-2'>
+                <h1 className='text-center text-xl 2xl:text-2xl text-experience pb-2'>
                   Committees
                 </h1>
                 <span
@@ -137,7 +168,7 @@ export default function Home() {
                     background:
                       "linear-gradient(180deg, #425F65 54.78%, rgba(100, 113, 151, 0.74) 154.78%)",
                   }}
-                  className='w-32 h-2 shadow-md'
+                  className='w-32 2xl:w-44 h-2 shadow-md'
                 />
                 <div className='flex pt-5 text'>
                   <span className='bg-white w-1 mx-5 ' />
@@ -145,10 +176,10 @@ export default function Home() {
                     <Image src='/dot.svg' width={28} height={28} />
                   </div>
                   <div className='flex-col pt-0.5'>
-                    <h1 className='text-white pb-1'>
+                    <h1 className='text-white 2xl:text-xl pb-1'>
                       Staff of Web Development at Betis UI 2021
                     </h1>
-                    <h1 className='text-sm text-alternate'>
+                    <h1 className='text-sm 2xl:text-base text-alternate'>
                       Staff of Project Development Division (Bismit), working on
                       various web development project requested from
                       inside/outside of campus
@@ -156,31 +187,31 @@ export default function Home() {
                     <div className='absolute left-1.5 translate-y-3.5 md:hidden'>
                       <Image src='/dot.svg' width={28} height={28} />
                     </div>
-                    <h1 className='text-white pt-3'>
+                    <h1 className='text-white 2xl:text-xl pt-3'>
                       Staff of Web Development at Pesta Rakyat Komputer (PERAK)
                       2021
                     </h1>
-                    <h1 className='text-sm text-alternate'>
+                    <h1 className='text-sm 2xl:text-base  text-alternate'>
                       Frontend developer. Using React.js as a main framework and
                       axios for fetching backend REST API that build with Django
                     </h1>
                     <div className='absolute left-1.5 translate-y-3.5 md:hidden'>
                       <Image src='/dot.svg' width={28} height={28} />
                     </div>
-                    <h1 className='text-white pt-3'>
+                    <h1 className='text-white 2xl:text-xl pt-3'>
                       Staff of Web Development at Open House Fasilkom 2022
                     </h1>
-                    <h1 className='text-sm text-alternate'>
+                    <h1 className='text-sm 2xl:text-base  text-alternate'>
                       Fullstack Developer. Using Prisma graphql for backend
                       backbones and Next.js as frontend main framework
                     </h1>
                     <div className='absolute left-1.5 translate-y-3 md:hidden'>
                       <Image src='/dot.svg' width={28} height={28} />
                     </div>
-                    <h1 className='text-white pt-3'>
+                    <h1 className='text-white 2xl:text-xl pt-3'>
                       Person In Charge Betis 2022
                     </h1>
-                    <h1 className='text-sm text-alternate'>
+                    <h1 className='text-sm 2xl:text-base text-alternate'>
                       Lead Betis 2022 web development team.
                     </h1>
                   </div>
@@ -219,7 +250,7 @@ export default function Home() {
                   <h1 className='underline pl-2 pb-2 pt-5 text-lg text-center'>
                     Tech Stack
                   </h1>
-                  <ul className='list-disc pl-7'>
+                  <ul className='list-disc '>
                     <div className='flex justify-center'>
                       <div className='mr-10'>
                         <li>Node</li>
@@ -241,6 +272,7 @@ export default function Home() {
                 background: "linear-gradient(180deg, #252525 0%, #1F2433 100%)",
               }}
               className='min-h-[100vh] '
+              ref={projectRef}
             >
               <h1 className='text-4xl text-[#D9D9DB] text-center text-white pt-10 pb-10'>
                 Personal Project
@@ -257,15 +289,27 @@ export default function Home() {
                         objectFit='cover'
                         alt={e.alt}
                       />
-                      <h1
-                        className={
-                          i !== 1
-                            ? "text-white text-center"
-                            : "text-gray-500 text-center"
-                        }
-                      >
-                        {e.desc}
-                      </h1>
+                      <div className={i === 0 ? "flex justify-center " : ""}>
+                        <h1
+                          className={
+                            i !== 1
+                              ? "text-white text-center"
+                              : "text-gray-500 text-center"
+                          }
+                        >
+                          {e.desc}
+                        </h1>
+                        {i === 0 && (
+                          <a
+                            className='flex items-center pl-2 cursor-pointer'
+                            href='https://umarejet.github.io/todo/'
+                            rel='noreferrer'
+                            target='_blank'
+                          >
+                            <Image src='/external.svg' width={20} height={20} />
+                          </a>
+                        )}
+                      </div>
                     </div>
                   );
                 })}
@@ -282,7 +326,7 @@ export default function Home() {
                   objectFit='cover'
                   alt='e-voting'
                 />
-                <h1 className='text-white'>E-Voting</h1>
+                <h1 className='text-white pt-2'>E-Voting</h1>
               </div>
             </div>
             <div
@@ -291,8 +335,10 @@ export default function Home() {
                 background: "linear-gradient(180deg, #202531 0%, #030303 100%)",
               }}
             >
-              <div className='w-11/12 mt-10'>
-                <h1 className='text-xl pb-5 md:mb-10'>Reach Me :</h1>
+              <div className='w-11/12 mt-44' ref={connectRef}>
+                <h1 className='text-xl pb-5 2xl:text-3xl md:mb-10'>
+                  Reach Me :
+                </h1>
                 <div className='flex flex-col md:flex-row justify-between'>
                   <div className='flex items-center'>
                     <Image src='/mail.svg' width={44} height={44} alt='mail' />
@@ -306,7 +352,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className='w-full flex justify-center items-center mt-20 pb-10'>
-                    <SocialMedia />
+                  <SocialMedia />
                 </div>
               </div>
             </div>
@@ -321,13 +367,27 @@ const SocialMedia = () => {
   return (
     <>
       <div className='mr-20 cursor-pointer col'>
-        <Image src='/linkedin.svg' width={37} height={37} />
+        <a
+          href='https://www.linkedin.com/in/umar-izzuddin/'
+          rel='noreferrer'
+          target='_blank'
+        >
+          <Image src='/linkedin.svg' width={37} height={37} />
+        </a>
       </div>
-      <div className='mr-20 cursor-pointer'>
-        <Image src='/github.svg' width={37} height={37} />
+      <div className='mr-20 cursor-pointer '>
+        <a href='https://github.com/umarez' rel='noreferrer' target='_blank'>
+          <Image src='/github.svg' width={37} height={37} />
+        </a>
       </div>
       <div className='cursor-pointer'>
-        <Image src='/instagram.svg' width={48} height={48} />
+        <a
+          href='https://www.instagram.com/umar_ez/'
+          rel='noreferrer'
+          target='_blank'
+        >
+          <Image src='/instagram.svg' width={48} height={48} />
+        </a>
       </div>
     </>
   );
