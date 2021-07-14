@@ -14,7 +14,7 @@ export default function Home() {
       >
         <div>
           <div className='ml-5 lg:ml-36 md:pt-10'>
-            <h1 className='text-white text-2xl md:text-5xl lg:text-7xl '>
+            <h1 className='text-white text-3xl md:text-5xl lg:text-7xl '>
               <Typewriter
                 options={{
                   strings: ["Hello I'm Umar!"],
@@ -72,18 +72,10 @@ export default function Home() {
           <div className='flex text-lg items-center justify-center md:justify-between'>
             <div className='flex items-center justify-center pb-5 md:pb-0'>
               <h1 className='hidden md:block md:mr-20'>Connect With me : </h1>
-              <div className='mr-20 cursor-pointer col'>
-                <Image src='/linkedin.svg' width={37} height={37} />
-              </div>
-              <div className='mr-20 cursor-pointer'>
-                <Image src='/github.svg' width={37} height={37} />
-              </div>
-              <div className='cursor-pointer'>
-                <Image src='/instagram.svg' width={48} height={48} />
-              </div>
+              <SocialMedia />
             </div>
             <div className='flex w- cursor-pointer hidden md:flex'>
-              <h1 className='mr-5 '>See my experiences</h1>
+              <h1 className='mr-5 font-semibold'>See my experiences</h1>
               <Image src='/arrow.svg' width={16} height={16} />
             </div>
           </div>
@@ -248,7 +240,7 @@ export default function Home() {
               style={{
                 background: "linear-gradient(180deg, #252525 0%, #1F2433 100%)",
               }}
-              className='min-h-[100vh]'
+              className='min-h-[100vh] '
             >
               <h1 className='text-4xl text-[#D9D9DB] text-center text-white pt-10 pb-10'>
                 Personal Project
@@ -294,24 +286,27 @@ export default function Home() {
               </div>
             </div>
             <div
-              className='min-h-[50vh] text-white flex justify-center items-center'
+              className='min-h-[50vh] text-white flex justify-center items-center relative'
               style={{
                 background: "linear-gradient(180deg, #202531 0%, #030303 100%)",
               }}
             >
-              <div className='w-11/12 '>
+              <div className='w-11/12 mt-10'>
                 <h1 className='text-xl pb-5 md:mb-10'>Reach Me :</h1>
                 <div className='flex flex-col md:flex-row justify-between'>
                   <div className='flex items-center'>
                     <Image src='/mail.svg' width={44} height={44} alt='mail' />
                     <h1 className='text-xl pl-3'>izzuddinumar13@gmail.com</h1>
                   </div>
-                  <div className='flex items-center justify-center pt-10 md:pt-0'>
-                    <h1 className='text-lg '>Say Hi To Me!</h1>
-                    <button className='w-32 h-8 lg:w-48 lg:h-14 bg-button text-[#F2ECEC] ml-2 shadow-shad md:mb-0 hover:bg-buttonHover'>
+                  <div className='flex items-center flex justify-between md:justify-center pt-10 md:pt-0'>
+                    <h1 className='text-lg pr-10'>Say Hi To Me!</h1>
+                    <button className='w-32 h-8 lg:w-48 lg:h-10 bg-button text-[#F2ECEC] ml-2 shadow-shad md:mb-0 hover:bg-buttonHover'>
                       <h1>Say Hi</h1>
                     </button>
                   </div>
+                </div>
+                <div className='w-full flex justify-center items-center mt-20 pb-10'>
+                    <SocialMedia />
                 </div>
               </div>
             </div>
