@@ -27,7 +27,6 @@ export default function Home() {
               Universitas Indonesia student, Software Engineer, IT Enthusiast
             </h1>
           </div>
-          <MenuButton />
         </div>
       </div>
       <div
@@ -62,7 +61,6 @@ export default function Home() {
           <div className='flex text-lg items-center justify-center md:justify-between'>
             <div className='flex items-center justify-center pb-5 md:pb-0'>
               <h1 className='hidden md:block md:mr-20'>Connect With me : </h1>
-              <SocialMedia />
             </div>
             <div className='flex w- cursor-pointer hidden md:flex'>
               <h1 className='mr-5 '>See my experiences</h1>
@@ -260,31 +258,20 @@ export default function Home() {
                   );
                 })}
               </div>
+              <h1 className='text-2xl text-white pt-10 pb-10'>Coming Soon</h1>
+              <div>
+                <Image
+                  src='/e-voting.svg'
+                  quality={100}
+                  width={214}
+                  height={214}
+                  objectFit='cover'
+                  alt='e-voting'
+                />
+                <h1 className='text-white'>E-Voting</h1>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div
-        className='min-h-[100vh] flex flex-col items-center text-center'
-        style={{
-          background: "linear-gradient(180deg, #252525 0%, #1F2433 100%)",
-        }}
-      >
-        <h1 className='text-3xl text-white pt-10 pb-10'>Personal Project</h1>
-        <div>
-          <PersonalProject />
-        </div>
-        <h1 className='text-2xl text-white pt-10 pb-10'>Coming Soon</h1>
-        <div>
-          <Image
-            src='/e-voting.svg'
-            quality={100}
-            width={214}
-            height={214}
-            objectFit='cover'
-            alt='e-voting'
-          />
-          <h1 className='text-white'>E-Voting</h1>
         </div>
       </div>
     </>
