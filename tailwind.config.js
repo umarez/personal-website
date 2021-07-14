@@ -1,4 +1,4 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
@@ -6,8 +6,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
-      'mobile-md' : '375px',
-      'mobile-l' : '425px',
+      "mobile-md": "375px",
+      "mobile-l": "425px",
+      "tablet-md": "860px",
       ...defaultTheme.screens,
     },
     extend: {
@@ -15,16 +16,15 @@ module.exports = {
         inconsolata: ["Inconsolata", "monospace"],
       },
       boxShadow: {
-        shad: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-        blue: '-0.5rem 0.5rem rgba(96, 152, 164, 1)'
+        shad: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+        blue: "-0.5rem 0.5rem rgba(96, 152, 164, 1)",
       },
       colors: {
-        button: '#333449',
-        buttonHover : '#292B50',
-        experience : '#C8EEFF',
-        alternate: '#CEB4B4',
+        button: "#333449",
+        buttonHover: "#292B50",
+        experience: "#C8EEFF",
+        alternate: "#CEB4B4",
       },
-      
     },
   },
   variants: {

@@ -1,5 +1,6 @@
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
+import { project } from "../component/Project";
 
 export default function Home() {
   return (
@@ -118,7 +119,7 @@ export default function Home() {
               />
               <div className='flex pt-5 text'>
                 <span className='bg-white w-1 mx-5 ' />
-                <div className='absolute left-1.5 translate-y-2'>
+                <div className='absolute left-1.5 translate-y-2 md:hidden'>
                   <Image src='/dot.svg' width={28} height={28} />
                 </div>
                 <div className='flex-col'>
@@ -148,7 +149,7 @@ export default function Home() {
                 />
                 <div className='flex pt-5 text'>
                   <span className='bg-white w-1 mx-5 ' />
-                  <div className='absolute left-1.5 translate-y-1'>
+                  <div className='absolute left-1.5 translate-y-1 md:hidden'>
                     <Image src='/dot.svg' width={28} height={28} />
                   </div>
                   <div className='flex-col pt-0.5'>
@@ -160,7 +161,7 @@ export default function Home() {
                       various web development project requested from
                       inside/outside of campus
                     </h1>
-                    <div className='absolute left-1.5 translate-y-3.5'>
+                    <div className='absolute left-1.5 translate-y-3.5 md:hidden'>
                       <Image src='/dot.svg' width={28} height={28} />
                     </div>
                     <h1 className='text-white pt-3'>
@@ -171,7 +172,7 @@ export default function Home() {
                       Frontend developer. Using React.js as a main framework and
                       axios for fetching backend REST API that build with Django
                     </h1>
-                    <div className='absolute left-1.5 translate-y-3.5'>
+                    <div className='absolute left-1.5 translate-y-3.5 md:hidden'>
                       <Image src='/dot.svg' width={28} height={28} />
                     </div>
                     <h1 className='text-white pt-3'>
@@ -181,7 +182,7 @@ export default function Home() {
                       Fullstack Developer. Using Prisma graphql for backend
                       backbones and Next.js as frontend main framework
                     </h1>
-                    <div className='absolute left-1.5 translate-y-3'>
+                    <div className='absolute left-1.5 translate-y-3 md:hidden'>
                       <Image src='/dot.svg' width={28} height={28} />
                     </div>
                     <h1 className='text-white pt-3'>
@@ -206,8 +207,8 @@ export default function Home() {
                 }}
                 className='w-32 h-2 shadow-md'
               />
-              <div className='w-full pt-5'>
-                <div className='w-4/5 translate-x-10 bg-white shadow-blue'>
+              <div className='w-full pt-5 flex justify-center'>
+                <div className='w-4/5  bg-white shadow-blue pb-10'>
                   <h1 className='underline pl-2 pb-2 text-lg text-center'>
                     Programming language
                   </h1>
@@ -243,7 +244,41 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div></div>
+            <div
+              style={{
+                background: "linear-gradient(180deg, #252525 0%, #1F2433 100%)",
+              }}
+              className='min-h-[100vh]'
+            >
+              <h1 className='text-3xl text-center text-white pt-10 pb-10'>
+                Personal Project
+              </h1>
+              <div className='flex flex-col md:flex-row items-center justify-center'>
+                {project.map((e, i) => {
+                  return (
+                    <div className='pb-10 mx-5' key={i}>
+                      <Image
+                        src={e.src}
+                        quality={100}
+                        width={214}
+                        height={214}
+                        objectFit='cover'
+                        alt={e.alt}
+                      />
+                      <h1
+                        className={
+                          i !== 1
+                            ? "text-white text-center"
+                            : "text-gray-500 text-center"
+                        }
+                      >
+                        {e.desc}
+                      </h1>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </div>
