@@ -7,6 +7,9 @@ import { signIn, signOut, useSession } from "next-auth/client";
 import { redirect } from "next/dist/next-server/server/api-utils";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { SendMail } from "../component/SendEmail";
+import Experiences from "../component/Experiences";
+import SocialMedia from "../component/SocialMedia";
 
 export default function Home() {
   const [session, loading] = useSession();
@@ -180,52 +183,7 @@ export default function Home() {
                   }}
                   className='w-32 2xl:w-44 h-2 shadow-md'
                 />
-                <div className='flex pt-5 text'>
-                  <span className='bg-white w-1 mx-5 ' />
-                  <div className='absolute left-1.5 translate-y-1 md:hidden'>
-                    <Image src='/dot.svg' width={28} height={28} />
-                  </div>
-                  <div className='flex-col pt-0.5'>
-                    <h1 className='text-white 2xl:text-xl pb-1'>
-                      Staff of Web Development at Betis UI 2021
-                    </h1>
-                    <h1 className='text-sm 2xl:text-base text-alternate'>
-                      Staff of Project Development Division (Bismit), working on
-                      various web development project requested from
-                      inside/outside of campus
-                    </h1>
-                    <div className='absolute left-1.5 translate-y-3.5 md:hidden'>
-                      <Image src='/dot.svg' width={28} height={28} />
-                    </div>
-                    <h1 className='text-white 2xl:text-xl pt-3'>
-                      Staff of Web Development at Pesta Rakyat Komputer (PERAK)
-                      2021
-                    </h1>
-                    <h1 className='text-sm 2xl:text-base  text-alternate'>
-                      Frontend developer. Using React.js as a main framework and
-                      axios for fetching backend REST API that build with Django
-                    </h1>
-                    <div className='absolute left-1.5 translate-y-3.5 md:hidden'>
-                      <Image src='/dot.svg' width={28} height={28} />
-                    </div>
-                    <h1 className='text-white 2xl:text-xl pt-3'>
-                      Staff of Web Development at Open House Fasilkom 2022
-                    </h1>
-                    <h1 className='text-sm 2xl:text-base  text-alternate'>
-                      Fullstack Developer. Using Prisma graphql for backend
-                      backbones and Next.js as frontend main framework
-                    </h1>
-                    <div className='absolute left-1.5 translate-y-3 md:hidden'>
-                      <Image src='/dot.svg' width={28} height={28} />
-                    </div>
-                    <h1 className='text-white 2xl:text-xl pt-3'>
-                      Person In Charge Betis 2022
-                    </h1>
-                    <h1 className='text-sm 2xl:text-base text-alternate'>
-                      Lead Betis 2022 web development team.
-                    </h1>
-                  </div>
-                </div>
+                <Experiences />
               </div>
             </div>
 
@@ -356,7 +314,7 @@ export default function Home() {
                   </div>
                   <div className='flex items-center flex justify-between md:justify-center pt-10 md:pt-0'>
                     <h1 className='text-lg pr-10'>Say Hi To Me!</h1>
-                    <button
+                    <div
                       onClick={() => {
                         if (!session) {
                           signIn("google", {
@@ -369,10 +327,9 @@ export default function Home() {
                           });
                         }
                       }}
-                      className='w-32 h-8 lg:w-48 lg:h-10 bg-button text-[#F2ECEC] ml-2 shadow-shad md:mb-0 hover:bg-buttonHover'
                     >
-                      <h1>Say Hi</h1>
-                    </button>
+                      <SendMail />
+                    </div>
                   </div>
                 </div>
                 <div className='w-full flex justify-center items-center mt-20 pb-20'>
@@ -386,33 +343,3 @@ export default function Home() {
     </>
   );
 }
-
-const SocialMedia = () => {
-  return (
-    <>
-      <div className='mr-20 cursor-pointer col'>
-        <a
-          href='https://www.linkedin.com/in/umar-izzuddin/'
-          rel='noreferrer'
-          target='_blank'
-        >
-          <Image src='/linkedin.svg' width={37} height={37} />
-        </a>
-      </div>
-      <div className='mr-20 cursor-pointer '>
-        <a href='https://github.com/umarez' rel='noreferrer' target='_blank'>
-          <Image src='/github.svg' width={37} height={37} />
-        </a>
-      </div>
-      <div className='cursor-pointer'>
-        <a
-          href='https://www.instagram.com/umar_ez/'
-          rel='noreferrer'
-          target='_blank'
-        >
-          <Image src='/instagram.svg' width={48} height={48} />
-        </a>
-      </div>
-    </>
-  );
-};
