@@ -6,6 +6,16 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta
+            name='google-signin-client_id'
+            content='7519284269-te4q19eijdqg7npp9ub5v2pj5khi0bm1.apps.googleusercontent.com'
+          ></meta>
+          <script
+            src='https://apis.google.com/js/platform.js'
+            async
+            defer
+          ></script>
+
           <link rel='preconnect' href='https://fonts.googleapis.com' />
           <link
             rel='preconnect'

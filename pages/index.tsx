@@ -3,8 +3,11 @@ import Image from "next/image";
 import { project } from "../component/Project";
 import { useRef } from "react";
 import Link from "next/link";
+import { signIn, signOut, useSession } from "next-auth/client";
 
 export default function Home() {
+  const [session, loading] = useSession();
+
   const aboutRef = useRef<null | HTMLDivElement>(null);
   const projectRef = useRef<null | HTMLDivElement>(null);
   const connectRef = useRef<null | HTMLDivElement>(null);
@@ -346,12 +349,21 @@ export default function Home() {
                   </div>
                   <div className='flex items-center flex justify-between md:justify-center pt-10 md:pt-0'>
                     <h1 className='text-lg pr-10'>Say Hi To Me!</h1>
-                    <button className='w-32 h-8 lg:w-48 lg:h-10 bg-button text-[#F2ECEC] ml-2 shadow-shad md:mb-0 hover:bg-buttonHover'>
+                    <button
+                      onClick={() => {
+                        if (!session) {
+                          signIn();
+                        } else {
+                          console.log(session);
+                        }
+                      }}
+                      className='w-32 h-8 lg:w-48 lg:h-10 bg-button text-[#F2ECEC] ml-2 shadow-shad md:mb-0 hover:bg-buttonHover'
+                    >
                       <h1>Say Hi</h1>
                     </button>
                   </div>
                 </div>
-                <div className='w-full flex justify-center items-center mt-20 pb-10'>
+                <div className='w-full flex justify-center items-center mt-20 pb-20'>
                   <SocialMedia />
                 </div>
               </div>
