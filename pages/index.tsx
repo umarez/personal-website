@@ -48,7 +48,7 @@ export default function Home() {
         }}
       >
         <div className='pt-12  text-[#B7B6B6] '>
-          <h1 className='w-full text-center text-[#D9D9DB] text-3xl md:text-5xl mb-10'>
+          <h1 className='w-full text-center text-[#D9D9DB] text-3xl md:text-4xl mb-10'>
             About Me
           </h1>
           <div className='w-full flex justify-center '>
@@ -101,7 +101,7 @@ export default function Home() {
         style={{ backgroundColor: "#252525" }}
         className='w-full min-h-[100vh]'
       >
-        <h1 className='text-3xl text-center text-white pt-10 pb-10'>
+        <h1 className='text-4xl text-center text-white pt-10 pb-10'>
           Experiences
         </h1>
         <div>
@@ -207,8 +207,8 @@ export default function Home() {
                 }}
                 className='w-32 h-2 shadow-md'
               />
-              <div className='w-full pt-5 flex justify-center'>
-                <div className='w-4/5  bg-white shadow-blue pb-10'>
+              <div className='w-full pt-5 flex justify-center '>
+                <div className='w-4/5 pt-10  bg-white shadow-blue pb-10 max-w-xs'>
                   <h1 className='underline pl-2 pb-2 text-lg text-center'>
                     Programming language
                   </h1>
@@ -224,7 +224,7 @@ export default function Home() {
                       </div>
                     </div>
                   </ul>
-                  <h1 className='underline pl-2 pb-2 text-lg text-center'>
+                  <h1 className='underline pl-2 pb-2 pt-5 text-lg text-center'>
                     Tech Stack
                   </h1>
                   <ul className='list-disc pl-7'>
@@ -250,7 +250,7 @@ export default function Home() {
               }}
               className='min-h-[100vh]'
             >
-              <h1 className='text-3xl text-center text-white pt-10 pb-10'>
+              <h1 className='text-4xl text-[#D9D9DB] text-center text-white pt-10 pb-10'>
                 Personal Project
               </h1>
               <div className='flex flex-col md:flex-row items-center justify-center'>
@@ -293,9 +293,47 @@ export default function Home() {
                 <h1 className='text-white'>E-Voting</h1>
               </div>
             </div>
+            <div
+              className='min-h-[50vh] text-white flex justify-center items-center'
+              style={{
+                background: "linear-gradient(180deg, #202531 0%, #030303 100%)",
+              }}
+            >
+              <div className='w-11/12 '>
+                <h1 className='text-xl pb-5 md:mb-10'>Reach Me :</h1>
+                <div className='flex flex-col md:flex-row justify-between'>
+                  <div className='flex items-center'>
+                    <Image src='/mail.svg' width={44} height={44} alt='mail' />
+                    <h1 className='text-xl pl-3'>izzuddinumar13@gmail.com</h1>
+                  </div>
+                  <div className='flex items-center justify-center pt-10 md:pt-0'>
+                    <h1 className='text-lg '>Say Hi To Me!</h1>
+                    <button className='w-32 h-8 lg:w-48 lg:h-14 bg-button text-[#F2ECEC] ml-2 shadow-shad md:mb-0 hover:bg-buttonHover'>
+                      <h1>Say Hi</h1>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </>
   );
 }
+
+const SocialMedia = () => {
+  return (
+    <>
+      <div className='mr-20 cursor-pointer col'>
+        <Image src='/linkedin.svg' width={37} height={37} />
+      </div>
+      <div className='mr-20 cursor-pointer'>
+        <Image src='/github.svg' width={37} height={37} />
+      </div>
+      <div className='cursor-pointer'>
+        <Image src='/instagram.svg' width={48} height={48} />
+      </div>
+    </>
+  );
+};
