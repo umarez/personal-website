@@ -27,17 +27,7 @@ export default function Home() {
               Universitas Indonesia student, Software Engineer, IT Enthusiast
             </h1>
           </div>
-          <div className='flex-col translate-y-16  items-center lg:translate-y-40 w-full flex md:flex-row justify-center'>
-            <button className='w-32 h-8 lg:w-48 lg:h-14 bg-button text-[#F2ECEC] shadow-shad mb-5 md:mb-0 md:mr-[5.25rem] hover:bg-buttonHover'>
-              <h1>About Me</h1>
-            </button>
-            <button className='w-32 h-8 lg:w-48 lg:h-14 bg-button text-[#F2ECEC] shadow-shad hover:bg-buttonHover'>
-              Projects
-            </button>
-            <button className='w-32 h-8 lg:w-48 lg:h-14 bg-button text-[#F2ECEC] shadow-shad mt-5 md:mt-0 md:ml-[5.25rem] hover:bg-buttonHover'>
-              Contact Me
-            </button>
-          </div>
+          <MenuButton />
         </div>
       </div>
       <div
@@ -72,15 +62,7 @@ export default function Home() {
           <div className='flex text-lg items-center justify-center md:justify-between'>
             <div className='flex items-center justify-center pb-5 md:pb-0'>
               <h1 className='hidden md:block md:mr-20'>Connect With me : </h1>
-              <div className='mr-20 cursor-pointer '>
-                <Image src='/linkedin.svg' width={37} height={37} />
-              </div>
-              <div className='mr-20 cursor-pointer'>
-                <Image src='/github.svg' width={37} height={37} />
-              </div>
-              <div className='cursor-pointer'>
-                <Image src='/instagram.svg' width={48} height={48} />
-              </div>
+              <SocialMedia />
             </div>
             <div className='flex w- cursor-pointer hidden md:flex'>
               <h1 className='mr-5 '>See my experiences</h1>
@@ -280,6 +262,29 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div
+        className='min-h-[100vh] flex flex-col items-center text-center'
+        style={{
+          background: "linear-gradient(180deg, #252525 0%, #1F2433 100%)",
+        }}
+      >
+        <h1 className='text-3xl text-white pt-10 pb-10'>Personal Project</h1>
+        <div>
+          <PersonalProject />
+        </div>
+        <h1 className='text-2xl text-white pt-10 pb-10'>Coming Soon</h1>
+        <div>
+          <Image
+            src='/e-voting.svg'
+            quality={100}
+            width={214}
+            height={214}
+            objectFit='cover'
+            alt='e-voting'
+          />
+          <h1 className='text-white'>E-Voting</h1>
         </div>
       </div>
     </>
