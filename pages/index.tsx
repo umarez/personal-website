@@ -4,14 +4,21 @@ import { project } from "../component/Project";
 import { useRef } from "react";
 import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/client";
+import { redirect } from "next/dist/next-server/server/api-utils";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const [session, loading] = useSession();
+
+  const router = useRouter();
 
   const aboutRef = useRef<null | HTMLDivElement>(null);
   const projectRef = useRef<null | HTMLDivElement>(null);
   const connectRef = useRef<null | HTMLDivElement>(null);
   const experienceRef = useRef<null | HTMLDivElement>(null);
+
+  console.log(router.query);
 
   return (
     <>
@@ -352,9 +359,14 @@ export default function Home() {
                     <button
                       onClick={() => {
                         if (!session) {
-                          signIn();
+                          signIn("google", {
+                            callbackUrl: "http://localhost:3000/?sendMail=true",
+                          });
                         } else {
                           console.log(session);
+                          router.push("/?sendMail=true", undefined, {
+                            shallow: true,
+                          });
                         }
                       }}
                       className='w-32 h-8 lg:w-48 lg:h-10 bg-button text-[#F2ECEC] ml-2 shadow-shad md:mb-0 hover:bg-buttonHover'
