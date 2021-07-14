@@ -1,5 +1,10 @@
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
+import SocialMedia from "../component/SocialMedia";
+import { Experiences } from "../component/Experiences";
+import { Skills } from "../component/Skills";
+import { MenuButton } from "../component/MenuButton";
+import { PersonalProject } from "../component/PersonalProject";
 
 export default function Home() {
   return (
@@ -26,17 +31,7 @@ export default function Home() {
               Universitas Indonesia student, Software Engineer, IT Enthusiast
             </h1>
           </div>
-          <div className='flex-col translate-y-16  items-center lg:translate-y-40 w-full flex md:flex-row justify-center'>
-            <button className='w-32 h-8 lg:w-48 lg:h-14 bg-button text-[#F2ECEC] shadow-shad mb-5 md:mb-0 md:mr-[5.25rem] hover:bg-buttonHover'>
-              <h1>About Me</h1>
-            </button>
-            <button className='w-32 h-8 lg:w-48 lg:h-14 bg-button text-[#F2ECEC] shadow-shad hover:bg-buttonHover'>
-              Projects
-            </button>
-            <button className='w-32 h-8 lg:w-48 lg:h-14 bg-button text-[#F2ECEC] shadow-shad mt-5 md:mt-0 md:ml-[5.25rem] hover:bg-buttonHover'>
-              Contact Me
-            </button>
-          </div>
+          <MenuButton />
         </div>
       </div>
       <div
@@ -71,15 +66,7 @@ export default function Home() {
           <div className='flex text-lg items-center justify-center md:justify-between'>
             <div className='flex items-center justify-center pb-5 md:pb-0'>
               <h1 className='hidden md:block md:mr-20'>Connect With me : </h1>
-              <div className='mr-20 cursor-pointer '>
-                <Image src='/linkedin.svg' width={37} height={37} />
-              </div>
-              <div className='mr-20 cursor-pointer'>
-                <Image src='/github.svg' width={37} height={37} />
-              </div>
-              <div className='cursor-pointer'>
-                <Image src='/instagram.svg' width={48} height={48} />
-              </div>
+              <SocialMedia />
             </div>
             <div className='flex w- cursor-pointer hidden md:flex'>
               <h1 className='mr-5 '>See my experiences</h1>
@@ -118,7 +105,7 @@ export default function Home() {
               />
               <div className='flex pt-5 text'>
                 <span className='bg-white w-1 mx-5 ' />
-                <div className='absolute left-1.5 translate-y-2'>
+                <div className='absolute left-1.5  translate-y-2 tablet-md:hidden md:left-2'>
                   <Image src='/dot.svg' width={28} height={28} />
                 </div>
                 <div className='flex-col'>
@@ -147,50 +134,7 @@ export default function Home() {
                   className='w-32 h-2 shadow-md'
                 />
                 <div className='flex pt-5 text'>
-                  <span className='bg-white w-1 mx-5 ' />
-                  <div className='absolute left-1.5 translate-y-1'>
-                    <Image src='/dot.svg' width={28} height={28} />
-                  </div>
-                  <div className='flex-col pt-0.5'>
-                    <h1 className='text-white pb-1'>
-                      Staff of Web Development at Betis UI 2021
-                    </h1>
-                    <h1 className='text-sm text-alternate'>
-                      Staff of Project Development Division (Bismit), working on
-                      various web development project requested from
-                      inside/outside of campus
-                    </h1>
-                    <div className='absolute left-1.5 translate-y-3.5'>
-                      <Image src='/dot.svg' width={28} height={28} />
-                    </div>
-                    <h1 className='text-white pt-3'>
-                      Staff of Web Development at Pesta Rakyat Komputer (PERAK)
-                      2021
-                    </h1>
-                    <h1 className='text-sm text-alternate'>
-                      Frontend developer. Using React.js as a main framework and
-                      axios for fetching backend REST API that build with Django
-                    </h1>
-                    <div className='absolute left-1.5 translate-y-3.5'>
-                      <Image src='/dot.svg' width={28} height={28} />
-                    </div>
-                    <h1 className='text-white pt-3'>
-                      Staff of Web Development at Open House Fasilkom 2022
-                    </h1>
-                    <h1 className='text-sm text-alternate'>
-                      Fullstack Developer. Using Prisma graphql for backend
-                      backbones and Next.js as frontend main framework
-                    </h1>
-                    <div className='absolute left-1.5 translate-y-3'>
-                      <Image src='/dot.svg' width={28} height={28} />
-                    </div>
-                    <h1 className='text-white pt-3'>
-                      Person In Charge Betis 2022
-                    </h1>
-                    <h1 className='text-sm text-alternate'>
-                      Lead Betis 2022 web development team.
-                    </h1>
-                  </div>
+                  <Experiences />
                 </div>
               </div>
             </div>
@@ -206,45 +150,32 @@ export default function Home() {
                 }}
                 className='w-32 h-2 shadow-md'
               />
-              <div className='w-full pt-5'>
-                <div className='w-4/5 translate-x-10 bg-white shadow-blue'>
-                  <h1 className='underline pl-2 pb-2 text-lg text-center'>
-                    Programming language
-                  </h1>
-                  <ul className='list-disc'>
-                    <div className='flex justify-center'>
-                      <div className='mr-10'>
-                        <li>Python</li>
-                        <li>Java</li>
-                      </div>
-                      <div>
-                        <li>Javascript</li>
-                        <li>Typescript</li>
-                      </div>
-                    </div>
-                  </ul>
-                  <h1 className='underline pl-2 pb-2 text-lg text-center'>
-                    Tech Stack
-                  </h1>
-                  <ul className='list-disc pl-7'>
-                    <div className='flex justify-center'>
-                      <div className='mr-10'>
-                        <li>Node</li>
-                        <li>Postgresql</li>
-                        <li>Next.js</li>
-                      </div>
-                      <div>
-                        <li>React</li>
-                        <li>Docker</li>
-                        <li>Git</li>
-                      </div>
-                    </div>
-                  </ul>
-                </div>
-              </div>
+              <Skills />
             </div>
-            <div></div>
           </div>
+        </div>
+      </div>
+      <div
+        className='min-h-[100vh] flex flex-col items-center text-center'
+        style={{
+          background: "linear-gradient(180deg, #252525 0%, #1F2433 100%)",
+        }}
+      >
+        <h1 className='text-3xl text-white pt-10 pb-10'>Personal Project</h1>
+        <div>
+          <PersonalProject />
+        </div>
+        <h1 className='text-2xl text-white pt-10 pb-10'>Coming Soon</h1>
+        <div>
+          <Image
+            src='/e-voting.svg'
+            quality={100}
+            width={214}
+            height={214}
+            objectFit='cover'
+            alt='e-voting'
+          />
+          <h1 className='text-white'>E-Voting</h1>
         </div>
       </div>
     </>
