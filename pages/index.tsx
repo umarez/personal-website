@@ -30,6 +30,7 @@ export default function Home() {
     }
   }, [session]);
   console.log(from);
+  
   return (
     <>
       <div
@@ -98,7 +99,12 @@ export default function Home() {
               <h1 className='hidden md:block md:mr-20'>Connect With me : </h1>
               <SocialMedia />
             </div>
-            <div className='flex w- cursor-pointer hidden md:flex'>
+            <div
+              className='flex w- cursor-pointer hidden md:flex'
+              onClick={() => {
+                experienceRef.current?.scrollIntoView();
+              }}
+            >
               <h1 className='mr-5 font-semibold'>See my experiences</h1>
               <Image src='/arrow.svg' width={16} height={16} />
             </div>

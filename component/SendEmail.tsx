@@ -41,22 +41,23 @@ export const SendMail = () => {
   };
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    const send = fetch("/api/sendmail", {
+      method: "POST",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     if (val.trim().length > 0) {
-      fetch("/api/sendmail", {
-        method: "POST",
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      })
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+        send
     } else {
       console.log("tidak boleh kosong");
     }

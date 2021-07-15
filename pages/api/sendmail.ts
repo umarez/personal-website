@@ -35,7 +35,7 @@ export default function async(req: any, res: any) {
     subject: "Say Hi!",
     text: `${req.body.val} `,
     html: `<div>${req.body.val}</div><p>Sent from:
-    ${req.body.email}</p>`
+    ${req.body.email}</p>`,
   };
 
   transporter.sendMail(mailOptions, function (err: any, data: any) {
@@ -48,5 +48,4 @@ export default function async(req: any, res: any) {
   });
 
   res.status(200);
-  res.send("Memanggil API");
 }
