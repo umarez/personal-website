@@ -1,15 +1,16 @@
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
-import { project } from "../component/Project";
 import { useRef } from "react";
-import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/client";
-import { redirect } from "next/dist/next-server/server/api-utils";
-import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { SendMail } from "../component/SendEmail";
 import Experiences from "../component/Experiences";
 import SocialMedia from "../component/SocialMedia";
+import { Skills } from "../component/Skills";
+import { Projects } from "../component/Projects";
+import { ButtonsNavigation } from "../component/ButtonsNavigation";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export default function Home() {
   const [session, loading] = useSession();
@@ -21,8 +22,14 @@ export default function Home() {
   const connectRef = useRef<null | HTMLDivElement>(null);
   const experienceRef = useRef<null | HTMLDivElement>(null);
 
-  console.log(router.query);
-
+  const [from, setFrom] = useState<any>("");
+  // console.log(router.query);
+  useEffect(() => {
+    if (session?.user?.email) {
+      setFrom(session?.user?.email);
+    }
+  }, [session]);
+  console.log(from);
   return (
     <>
       <div
@@ -47,32 +54,11 @@ export default function Home() {
               Universitas Indonesia student, Software Engineer, IT Enthusiast
             </h1>
           </div>
-          <div className='flex-col translate-y-16 items-center lg:translate-y-40 w-full flex md:flex-row justify-center'>
-            <button
-              onClick={() => {
-                aboutRef.current?.scrollIntoView();
-              }}
-              className='w-32 h-8 lg:w-48 lg:h-14 bg-button text-[#F2ECEC] shadow-shad mb-5 md:mb-0 md:mr-[5.25rem] hover:bg-buttonHover'
-            >
-              <h1>About Me</h1>
-            </button>
-            <button
-              onClick={() => {
-                projectRef.current?.scrollIntoView();
-              }}
-              className='w-32 h-8 lg:w-48 lg:h-14 bg-button text-[#F2ECEC] shadow-shad hover:bg-buttonHover'
-            >
-              Projects
-            </button>
-            <button
-              onClick={() => {
-                connectRef.current?.scrollIntoView();
-              }}
-              className='w-32 h-8 lg:w-48 lg:h-14 bg-button text-[#F2ECEC] shadow-shad mt-5 md:mt-0 md:ml-[5.25rem] hover:bg-buttonHover'
-            >
-              Contact Me
-            </button>
-          </div>
+          <ButtonsNavigation
+            aboutRef={aboutRef}
+            projectRef={projectRef}
+            connectRef={connectRef}
+          />
         </div>
       </div>
       <div
@@ -198,43 +184,16 @@ export default function Home() {
                 }}
                 className='w-32 h-2 shadow-md'
               />
-              <div className='w-full pt-5 flex justify-center '>
-                <div className='w-4/5 pt-10  bg-white shadow-blue pb-10 max-w-xs'>
-                  <h1 className='underline pl-2 pb-2 text-lg text-center'>
-                    Programming language
-                  </h1>
-                  <ul className='list-disc'>
-                    <div className='flex justify-center'>
-                      <div className='mr-10'>
-                        <li>Python</li>
-                        <li>Java</li>
-                      </div>
-                      <div>
-                        <li>Javascript</li>
-                        <li>Typescript</li>
-                      </div>
-                    </div>
-                  </ul>
-                  <h1 className='underline pl-2 pb-2 pt-5 text-lg text-center'>
-                    Tech Stack
-                  </h1>
-                  <ul className='list-disc '>
-                    <div className='flex justify-center'>
-                      <div className='mr-10'>
-                        <li>Node</li>
-                        <li>Postgresql</li>
-                        <li>Next.js</li>
-                      </div>
-                      <div>
-                        <li>React</li>
-                        <li>Docker</li>
-                        <li>Git</li>
-                      </div>
-                    </div>
-                  </ul>
+              <div className='w-full pt-5 flex justify-center h-80 '>
+                <div
+                  className='w-4/5 pt-10  bg-white shadow-blue pb-10 max-w-xs h-72'
+                  style={{ maxWidth: "280px" }}
+                >
+                  <Skills />
                 </div>
               </div>
             </div>
+
             <div
               style={{
                 background: "linear-gradient(180deg, #252525 0%, #1F2433 100%)",
@@ -242,61 +201,9 @@ export default function Home() {
               className='min-h-[100vh] '
               ref={projectRef}
             >
-              <h1 className='text-4xl text-[#D9D9DB] text-center text-white pt-10 pb-10'>
-                Personal Project
-              </h1>
-              <div className='flex flex-col md:flex-row items-center justify-center'>
-                {project.map((e, i) => {
-                  return (
-                    <div className='pb-10 mx-5' key={i}>
-                      <Image
-                        src={e.src}
-                        quality={100}
-                        width={214}
-                        height={214}
-                        objectFit='cover'
-                        alt={e.alt}
-                      />
-                      <div className={i === 0 ? "flex justify-center " : ""}>
-                        <h1
-                          className={
-                            i !== 1
-                              ? "text-white text-center"
-                              : "text-gray-500 text-center"
-                          }
-                        >
-                          {e.desc}
-                        </h1>
-                        {i === 0 && (
-                          <a
-                            className='flex items-center pl-2 cursor-pointer'
-                            href='https://umarejet.github.io/todo/'
-                            rel='noreferrer'
-                            target='_blank'
-                          >
-                            <Image src='/external.svg' width={20} height={20} />
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-              <h1 className='text-2xl text-white pt-10 pb-10 text-center'>
-                Coming Soon
-              </h1>
-              <div className='flex flex-col items-center'>
-                <Image
-                  src='/e-voting.svg'
-                  quality={100}
-                  width={214}
-                  height={214}
-                  objectFit='cover'
-                  alt='e-voting'
-                />
-                <h1 className='text-white pt-2'>E-Voting</h1>
-              </div>
+              <Projects />
             </div>
+
             <div
               className='min-h-[50vh] text-white flex justify-center items-center relative'
               style={{
@@ -321,7 +228,8 @@ export default function Home() {
                             callbackUrl: "http://localhost:3000/?sendMail=true",
                           });
                         } else {
-                          console.log(session);
+                          // console.log(session?.user);
+                          setFrom(session?.user?.email);
                           router.push("/?sendMail=true", undefined, {
                             shallow: true,
                           });
