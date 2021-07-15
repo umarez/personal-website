@@ -1,5 +1,6 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { useSession } from "next-auth/client";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { Fragment, useState } from "react";
 import { EmailDraft } from "./EmailDraft";
@@ -11,6 +12,7 @@ export const SendMail = () => {
   const [session, loading] = useSession();
 
   const to: string = "izzuddinumar13@gmail.com";
+  const router = useRouter();
 
   function closeModal() {
     setIsOpen(false);
@@ -22,6 +24,15 @@ export const SendMail = () => {
   useEffect(() => {
     setEmail(session?.user?.email);
   }, [session]);
+
+  useEffect(() => {
+    if (router.query.sendMail !== undefined && isOpen == false) {
+      setTimeout(() => {
+        openModal();
+      }, 500);
+    }
+    console.log(router.query.sendMail);
+  }, [router]);
 
   let data = {
     to,
@@ -129,7 +140,7 @@ export const SendMail = () => {
                           The Email won&apos;t be recorded in your gmail sent
                           box but still sended to me 😄
                         </p>
-                        <div className='mt-4 flex justify-end'>
+                        <div className='mt-4 flex flex-end'>
                           <button
                             type='submit'
                             className='bg-red-700 inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500'
