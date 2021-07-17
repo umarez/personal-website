@@ -1,3 +1,4 @@
+
 export default function async(req: any, res: any) {
   let nodemailer = require("nodemailer");
   const transporter = nodemailer.createTransport({
@@ -33,17 +34,19 @@ export default function async(req: any, res: any) {
     from: `umar.website.bot@gmail.com`,
     to: "izzuddinumar13@gmail.com",
     subject: "Say Hi!",
-    text: `${req.body.val} `,
+    text: `${req.body.val}`,
     html: `<div>${req.body.val}</div><p>Sent from:
     ${req.body.email}</p>`,
   };
 
   transporter.sendMail(mailOptions, function (err: any, data: any) {
-    console.log("masuk");
-    if (err) {
+    console.log(req.body)
+    if (err || req.body.email == undefined) {
       console.log("Error " + err);
+      res.send(err).status(400)
     } else {
       console.log("Email sent successfully");
+      res.send("Email sent successfully").status(200)
     }
   });
 

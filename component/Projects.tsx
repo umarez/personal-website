@@ -1,17 +1,43 @@
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 import { project } from "./Project";
 import { projectType } from "./Type/ProjectType";
+import { motion } from "framer-motion";
+import { container, item } from "./animation/animation";
 
 export const Projects = () => {
+  const { ref: ref, inView: projectView } = useInView({
+    threshold: 0.3,
+  });
+
+  const [vars, setVar] = useState<boolean>(false);
+  useEffect(() => {
+    if (projectView) {
+      setVar(true);
+    } else {
+      setVar(false);
+    }
+  }, [projectView]);
+
   return (
-    <>
+    <div ref={ref}>
       <h1 className='text-4xl text-[#D9D9DB] text-center text-white pt-10 pb-10'>
         Personal Project
       </h1>
-      <div className='flex flex-col md:flex-row items-center justify-center'>
+      <motion.div
+        variants={container}
+        animate={vars ? "show" : "hidden"}
+        className='flex flex-col md:flex-row items-center justify-center'
+      >
         {project.map((e, i) => {
           return (
-            <div className='pb-10 mx-5' key={i}>
+            <motion.div
+              variants={item}
+              animate={vars ? "show" : "hidden"}
+              className='pb-10 mx-5'
+              key={i}
+            >
               <Image
                 src={e.src}
                 quality={100}
@@ -41,10 +67,10 @@ export const Projects = () => {
                   </a>
                 )}
               </div>
-            </div>
+            </motion.div>
           );
         })}
-      </div>
+      </motion.div>
       <h1 className='text-2xl text-white pt-10 pb-10 text-center'>
         Coming Soon
       </h1>
@@ -59,6 +85,6 @@ export const Projects = () => {
         />
         <h1 className='text-white pt-2'>E-Voting</h1>
       </div>
-    </>
+    </div>
   );
 };

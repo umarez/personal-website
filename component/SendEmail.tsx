@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { Fragment, useState } from "react";
 import { EmailDraft } from "./EmailDraft";
+import toast, { Toaster } from "react-hot-toast";
 
 export const SendMail = () => {
   let [isOpen, setIsOpen] = useState(false);
@@ -26,13 +27,16 @@ export const SendMail = () => {
   }, [session]);
 
   useEffect(() => {
-    if (router.query.sendMail !== undefined && isOpen == false) {
+    if (
+      router.query.sendMail !== undefined &&
+      isOpen == false &&
+      email !== undefined
+    ) {
       setTimeout(() => {
         openModal();
       }, 500);
     }
-    console.log(router.query.sendMail);
-  }, [router]);
+  }, [router, email]);
 
   let data = {
     to,
@@ -53,13 +57,20 @@ export const SendMail = () => {
         console.log(res);
       })
       .catch((err) => {
-        console.log(err);
+        throw err;
       });
 
     if (val.trim().length > 0) {
-        send
+      const fetchingToast = toast.promise(send, {
+        loading: "Sending...",
+        success: "Email sent!",
+        error: "Error sending email :(",
+      }).then(()=>{
+        router.push('/')
+      });
+      fetchingToast;
     } else {
-      console.log("tidak boleh kosong");
+      toast.error("Email yang ingin dikirim tidak boleh kosong")
     }
   };
 
@@ -67,6 +78,7 @@ export const SendMail = () => {
     <>
       {
         <>
+          <Toaster />
           <div className='inset-0 flex items-center justify-center '>
             <button
               type='button'
@@ -137,6 +149,7 @@ export const SendMail = () => {
                             setVal(e.target.value);
                           }}
                         />
+
                         <p className='text-sm text-gray-500'>
                           The Email won&apos;t be recorded in your gmail sent
                           box but still sended to me 😄

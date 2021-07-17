@@ -11,6 +11,14 @@ import { Projects } from "../component/Projects";
 import { ButtonsNavigation } from "../component/ButtonsNavigation";
 import { useState } from "react";
 import { useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import {
+  aboutAnimation,
+  dissapearLeft,
+  dissapearScale,
+  experienceAnimation,
+} from "../component/animation/animation";
 
 export default function Home() {
   const [session, loading] = useSession();
@@ -22,15 +30,39 @@ export default function Home() {
   const connectRef = useRef<null | HTMLDivElement>(null);
   const experienceRef = useRef<null | HTMLDivElement>(null);
 
+  const animation = useAnimation();
+  const animation2 = useAnimation();
+  const { ref: ref1, inView: aboutView } = useInView({
+    threshold: 0.3,
+  });
+
+  const { ref: ref2, inView: experienceView } = useInView({
+    threshold: 0.01,
+  });
+
   const [from, setFrom] = useState<any>("");
-  // console.log(router.query);
   useEffect(() => {
     if (session?.user?.email) {
       setFrom(session?.user?.email);
     }
   }, [session]);
-  console.log(from);
-  
+
+  useEffect(() => {
+    if (aboutView) {
+      animation.start(aboutAnimation);
+    } else {
+      animation.start(dissapearLeft);
+    }
+  }, [aboutView]);
+
+  useEffect(() => {
+    if (experienceView) {
+      animation2.start(experienceAnimation);
+    } else {
+      animation2.start(dissapearScale);
+    }
+  }, [experienceView]);
+
   return (
     <>
       <div
@@ -69,63 +101,68 @@ export default function Home() {
             "linear-gradient(180deg, rgba(19, 31, 48, 0.96) 0%, rgba(37, 37, 37, 1) 100%)",
         }}
       >
-        <div
-          ref={aboutRef}
-          className='w-full pt-12  text-[#B7B6B6] 2xl:container 2xl:mx-auto '
-        >
-          <h1 className='w-full text-center text-[#D9D9DB] text-3xl md:text-4xl mb-10'>
-            About Me
-          </h1>
-          <div className='w-full flex justify-center '>
-            <div className='relative w-[193px] h-[193px] border-md'>
-              <Image className='' layout='fill' alt='me' src='/me.svg' />
-            </div>
-          </div>
-          <div className='max-w-screen-2xl flex flex-col items-center mt-12 mb-20 md:mb-32'>
-            <h1 className=' lg:leading-9 lg:text-xl'>
-              Hello, I&apos;m Umar Izzuddin! Universitas Indonesia Computer
-              Science&apos;s student who passionate about IT Development.
-              I&apos;m a self-learner, a hard worker, and an ambitious person.
-              I&apos;m also active in campus organizations and several
-              committees as a web developer. My interest in technology has
-              driven me to be a guy who never stops learning.
+        <div ref={aboutRef}>
+          <div
+            ref={ref1}
+            className='w-full pt-12  text-[#B7B6B6] 2xl:container 2xl:mx-auto '
+          >
+            <h1 className='w-full text-center text-[#D9D9DB] text-3xl md:text-4xl mb-10'>
+              About Me
             </h1>
-          </div>
-          <h1 className='text-center md:hidden font-semibold -translate-y-5'>
-            Connect with me
-          </h1>
-          <div className='flex text-lg items-center justify-center md:justify-between'>
-            <div className='flex items-center justify-center pb-5 md:pb-0'>
-              <h1 className='hidden md:block md:mr-20'>Connect With me : </h1>
-              <SocialMedia />
+            <div className='w-full flex justify-center '>
+              <div className='relative w-[193px] h-[193px] border-md'>
+                <Image className='' layout='fill' alt='me' src='/me.svg' />
+              </div>
             </div>
-            <div
-              className='flex w- cursor-pointer hidden md:flex'
-              onClick={() => {
-                experienceRef.current?.scrollIntoView();
-              }}
+            <motion.div
+              animate={animation}
+              className='max-w-screen-2xl flex flex-col items-center mt-12 mb-20 md:mb-32'
             >
-              <h1 className='mr-5 font-semibold'>See my experiences</h1>
-              <Image src='/arrow.svg' width={16} height={16} />
+              <h1 className=' lg:leading-9 lg:text-xl'>
+                Hello, I&apos;m Umar Izzuddin! Universitas Indonesia Computer
+                Science&apos;s student who passionate about IT Development.
+                I&apos;m a self-learner, a hard worker, and an ambitious person.
+                I&apos;m also active in campus organizations and several
+                committees as a web developer. My interest in technology has
+                driven me to be a guy who never stops learning.
+              </h1>
+            </motion.div>
+            <h1 className='text-center md:hidden font-semibold -translate-y-5'>
+              Connect with me
+            </h1>
+            <div className='flex text-lg items-center justify-center md:justify-between'>
+              <div className='flex items-center justify-center pb-5 md:pb-0'>
+                <h1 className='hidden md:block md:mr-20'>Connect With me : </h1>
+                <SocialMedia />
+              </div>
+              <div
+                className='flex w- cursor-pointer hidden md:flex'
+                onClick={() => {
+                  experienceRef.current?.scrollIntoView();
+                }}
+              >
+                <h1 className='mr-5 font-semibold'>See my experiences</h1>
+                <Image src='/arrow.svg' width={16} height={16} />
+              </div>
             </div>
-          </div>
-          <div className='flex justify-center items-center  md:hidden pl-3 '>
-            <div
-              onClick={() => {
-                experienceRef.current?.scrollIntoView();
-              }}
-              className='cursor-pointer flex items-center'
-            >
-              <h1 className='mr-2  font-semibold'>See my experiences</h1>
-              <div className='pt-1'>
-                <Image src='/arrow.svg' width={14} height={14} />
+            <div className='flex justify-center items-center  md:hidden pl-3 '>
+              <div
+                onClick={() => {
+                  experienceRef.current?.scrollIntoView();
+                }}
+                className='cursor-pointer flex items-center'
+              >
+                <h1 className='mr-2  font-semibold'>See my experiences</h1>
+                <div className='pt-1'>
+                  <Image src='/arrow.svg' width={14} height={14} />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div
-        ref={experienceRef}
+        ref={ref2}
         style={{ backgroundColor: "#252525" }}
         className='w-full min-h-[100vh]'
       >
@@ -134,39 +171,10 @@ export default function Home() {
         </h1>
         <div>
           <div className='flex flex-col'>
-            <div className='flex flex-col items-center'>
-              <h1 className='text-center text-xl 2xl:text-2xl text-experience pb-2'>
-                Organizational
-              </h1>
-              <span
-                style={{
-                  background:
-                    "linear-gradient(180deg, #425F65 54.78%, rgba(100, 113, 151, 0.74) 154.78%)",
-                }}
-                className='w-32 2xl:w-44 h-2 shadow-md'
-              />
-              <div className='flex pt-5 text'>
-                <span className='bg-white w-1 mx-5 ' />
-                <div className='absolute left-1.5 translate-y-2 md:hidden'>
-                  <Image src='/dot.svg' width={28} height={28} />
-                </div>
-                <div className='flex-col'>
-                  <h1 className='text-white 2xl:text-xl pb-2'>
-                    CS UI Executive Student Council 2021 (BEM Fasilkom UI)
-                  </h1>
-                  <h1 className='text-sm 2xl:text-base text-alternate'>
-                    Staff of Project Development Division (Bismit), working on
-                    various web development project requested from
-                    inside/outside of campus
-                  </h1>
-                </div>
-              </div>
-            </div>
-
-            <div className='pt-10 xl:pt-20'>
+            <motion.div className='flex flex-col' animate={animation2}>
               <div className='flex flex-col items-center'>
                 <h1 className='text-center text-xl 2xl:text-2xl text-experience pb-2'>
-                  Committees
+                  Organizational
                 </h1>
                 <span
                   style={{
@@ -175,30 +183,61 @@ export default function Home() {
                   }}
                   className='w-32 2xl:w-44 h-2 shadow-md'
                 />
-                <Experiences />
-              </div>
-            </div>
-
-            <div className='flex flex-col items-center pt-10 '>
-              <h1 className='text-center text-3xl text-experience pb-2'>
-                Skills
-              </h1>
-              <span
-                style={{
-                  background:
-                    "linear-gradient(180deg, #425F65 54.78%, rgba(100, 113, 151, 0.74) 154.78%)",
-                }}
-                className='w-32 h-2 shadow-md'
-              />
-              <div className='w-full pt-5 flex justify-center h-80 '>
-                <div
-                  className='w-4/5 pt-10  bg-white shadow-blue pb-10 max-w-xs h-72'
-                  style={{ maxWidth: "280px" }}
-                >
-                  <Skills />
+                <div className='flex pt-5 text'>
+                  <span className='bg-white w-1 mx-5 ' />
+                  <div className='absolute left-1.5 translate-y-2 md:hidden'>
+                    <Image src='/dot.svg' width={28} height={28} />
+                  </div>
+                  <div className='flex-col'>
+                    <h1 className='text-white 2xl:text-xl pb-2'>
+                      CS UI Executive Student Council 2021 (BEM Fasilkom UI)
+                    </h1>
+                    <h1 className='text-sm 2xl:text-base text-alternate'>
+                      Staff of Project Development Division (Bismit), working on
+                      various web development project requested from
+                      inside/outside of campus
+                    </h1>
+                  </div>
                 </div>
               </div>
-            </div>
+
+              <div className='pt-10 xl:pt-20'>
+                <div className='flex flex-col items-center'>
+                  <h1 className='text-center text-xl 2xl:text-2xl text-experience pb-2'>
+                    Committees
+                  </h1>
+                  <span
+                    style={{
+                      background:
+                        "linear-gradient(180deg, #425F65 54.78%, rgba(100, 113, 151, 0.74) 154.78%)",
+                    }}
+                    className='w-32 2xl:w-44 h-2 shadow-md'
+                  />
+                  <Experiences />
+                </div>
+              </div>
+
+              <div className='flex flex-col items-center pt-10 '>
+                <h1 className='text-center text-3xl text-experience pb-2'>
+                  Skills
+                </h1>
+                <span
+                  style={{
+                    background:
+                      "linear-gradient(180deg, #425F65 54.78%, rgba(100, 113, 151, 0.74) 154.78%)",
+                  }}
+                  className='w-32 h-2 shadow-md'
+                />
+                <div className='w-full pt-5 flex justify-center h-80 '>
+                  <div
+                    className='w-4/5 pt-10  bg-white shadow-blue pb-10 max-w-xs h-72'
+                    style={{ maxWidth: "280px" }}
+                  >
+                    <Skills />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
 
             <div
               style={{
@@ -246,6 +285,13 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
+                {/* <button
+                  onClick={() => {
+                    signOut();
+                  }}
+                >
+                  <h1>Log out</h1>
+                </button> */}
                 <div className='w-full flex justify-center items-center mt-20 pb-20'>
                   <SocialMedia />
                 </div>
