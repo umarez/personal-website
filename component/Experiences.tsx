@@ -22,7 +22,7 @@ const Experiences = () => {
           Staff of Web Development at Pesta Rakyat Komputer (PERAK) 2021
         </h1>
         <h1 className='text-sm 2xl:text-base  text-alternate'>
-          Frontend developer. Using React.js as a main framework and axios for
+          Frontend developer. Work with React.js as a main framework and axios for
           fetching backend REST API that build with Django
         </h1>
         <div className='absolute left-1.5 translate-y-3.5 md:hidden'>
@@ -32,7 +32,7 @@ const Experiences = () => {
           Staff of Web Development at Open House Fasilkom 2022
         </h1>
         <h1 className='text-sm 2xl:text-base  text-alternate'>
-          Fullstack Developer. Using Prisma graphql for backend backbones and
+          Fullstack Developer. Work with Prisma graphql for backend backbones and
           Next.js as frontend main framework
         </h1>
         <div className='absolute left-1.5 translate-y-3 md:hidden'>

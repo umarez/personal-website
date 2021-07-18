@@ -5,7 +5,7 @@ import { signIn, signOut, useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 import { SendMail } from "../component/SendEmail";
 import Experiences from "../component/Experiences";
-import SocialMedia from "../component/SocialMedia";
+import SocialMedia from "../component/socialMedia/SocialMedia";
 import { Skills } from "../component/Skills";
 import { Projects } from "../component/Projects";
 import { ButtonsNavigation } from "../component/ButtonsNavigation";
@@ -166,10 +166,10 @@ export default function Home() {
         style={{ backgroundColor: "#252525" }}
         className='w-full min-h-[100vh]'
       >
-        <h1 className='text-4xl text-center text-white pt-10 pb-10'>
+        <h1 ref={experienceRef} className='text-4xl text-center text-white pt-10 pb-10'>
           Experiences
         </h1>
-        <div>
+        <div >
           <div className='flex flex-col'>
             <motion.div className='flex flex-col' animate={animation2}>
               <div className='flex flex-col items-center'>

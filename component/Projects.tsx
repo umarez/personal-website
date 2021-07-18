@@ -8,7 +8,7 @@ import { container, item } from "./animation/animation";
 
 export const Projects = () => {
   const { ref: ref, inView: projectView } = useInView({
-    threshold: 0.3,
+    threshold: 0.5,
   });
 
   const [vars, setVar] = useState<boolean>(false);

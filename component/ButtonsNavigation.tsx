@@ -1,4 +1,3 @@
-import { useViewportScroll } from "framer-motion";
 import { RefObject } from "react";
 
 type refProps = {
@@ -12,7 +11,6 @@ export const ButtonsNavigation: React.FC<refProps> = ({
   projectRef,
   connectRef,
 }) => {
-  const { scrollYProgress } = useViewportScroll()
   
   return (
     <div className='flex-col translate-y-16 items-center lg:translate-y-40 w-full flex md:flex-row justify-center'>
