@@ -84,7 +84,7 @@ export default function Home() {
               />
             </h1>
             <h1 className='mt-7 text-[#726886] md:text-2xl lg:text-4xl lg:w-4/5'>
-              Universitas Indonesia students, Software Engineer, IT Enthusiast
+              Universitas Indonesia student, Software Engineer, IT Enthusiast
             </h1>
           </div>
           <ButtonsNavigation
