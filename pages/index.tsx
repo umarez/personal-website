@@ -124,7 +124,9 @@ export default function Home() {
                 I&apos;m a self-learner, a hard worker, and an ambitious person.
                 I&apos;m also active in campus organizations and several
                 committees as a web developer. My interest in technology has
-                driven me to be a guy who never stops learning.
+                driven me to be a guy who never stops learning. I also have
+                interest in music and film. Currently active in web development as full stack developer
+                with latest technology such as Next.js, Graphql, AWS, Docker and many more! 
               </h1>
             </div>
             <h1 className='text-center md:hidden font-semibold -translate-y-5'>
@@ -132,7 +134,7 @@ export default function Home() {
             </h1>
             <div className='flex text-lg items-center justify-center md:justify-between'>
               <div className='flex items-center justify-center pb-5 md:pb-0'>
-                <h1 className='hidden md:block md:mr-20'>Connect With me : </h1>
+                <h1 className='hidden md:block md:mr-10 lg:mr-0 xl:mr-20'>Connect With me : </h1>
                 <SocialMedia />
               </div>
               <div
@@ -166,14 +168,18 @@ export default function Home() {
         style={{ backgroundColor: "#252525" }}
         className='w-full min-h-[100vh]'
       >
-        <h1 ref={experienceRef} className='text-4xl text-center text-white pt-10 pb-10'>
+        <h1
+          ref={experienceRef}
+          className='text-4xl text-center text-white pt-10 pb-10'
+        >
           Experiences
         </h1>
-        <div >
+        <div>
           <div className='flex flex-col'>
-            <div className='flex flex-col'
-            //  animate={animation2}
-             >
+            <div
+              className='flex flex-col'
+              //  animate={animation2}
+            >
               <div className='flex flex-col items-center'>
                 <h1 className='text-center text-xl 2xl:text-2xl text-experience pb-2'>
                   Organizational
@@ -252,50 +258,61 @@ export default function Home() {
             </div>
 
             <div
-              className='min-h-[50vh] text-white flex justify-center items-center relative'
+              className='min-h-[50vh] text-white '
               style={{
                 background: "linear-gradient(180deg, #202531 0%, #030303 100%)",
               }}
             >
-              <div className='w-11/12 mt-44' ref={connectRef}>
-                <h1 className='text-xl pb-5 2xl:text-3xl md:mb-10'>
-                  Reach Me :
-                </h1>
-                <div className='flex flex-col md:flex-row justify-between'>
-                  <div className='flex items-center'>
-                    <Image src='/mail.svg' width={44} height={44} alt='mail' />
-                    <h1 className='text-xl pl-3'>izzuddinumar13@gmail.com</h1>
-                  </div>
-                  <div className='flex items-center flex justify-between md:justify-center pt-10 md:pt-0'>
-                    <h1 className='text-lg pr-10'>Say Hi To Me!</h1>
-                    <div
-                      onClick={() => {
-                        if (!session) {
-                          signIn("google", {
-                            callbackUrl: "http://localhost:3000/?sendMail=true",
-                          });
-                        } else {
-                          // console.log(session?.user);
-                          setFrom(session?.user?.email);
-                          router.push("/?sendMail=true", undefined, {
-                            shallow: true,
-                          });
-                        }
-                      }}
-                    >
-                      <SendMail />
+              <div className='flex w-full justify-center items-center relative'>
+                <div className='w-11/12 mt-44' ref={connectRef}>
+                  <h1 className='text-xl pb-5 2xl:text-3xl md:mb-10'>
+                    Reach Me :
+                  </h1>
+                  <div className='flex flex-col md:flex-row justify-between'>
+                    <div className='flex items-center'>
+                      <Image
+                        src='/mail.svg'
+                        width={44}
+                        height={44}
+                        alt='mail'
+                      />
+                      <h1 className='text-xl pl-3'>izzuddinumar13@gmail.com</h1>
+                    </div>
+                    <div className='flex items-center flex justify-between md:justify-center pt-10 md:pt-0'>
+                      <h1 className='text-lg pr-10'>Say Hi To Me!</h1>
+                      <div
+                        onClick={() => {
+                          if (!session) {
+                            signIn("google", {
+                              callbackUrl: process.env.PRODUCTION
+                                ? "https://umarizzuddin.com/?sendMail=true"
+                                : "http://localhost:3000/?sendMail=true",
+                            });
+                          } else {
+                            // console.log(session?.user);
+                            setFrom(session?.user?.email);
+                            router.push("/?sendMail=true", undefined, {
+                              shallow: true,
+                            });
+                          }
+                        }}
+                      >
+                        <SendMail />
+                      </div>
                     </div>
                   </div>
-                </div>
-                {/* <button
+                  {/* <button
                   onClick={() => {
                     signOut();
                   }}
                 >
                   <h1>Log out</h1>
                 </button> */}
-                <div className='w-full flex justify-center items-center mt-20 pb-20'>
-                  <SocialMedia />
+                </div>
+              </div>
+              <div className='w-full flex justify-center items-center mt-20 pb-20'>
+                <div className="flex items-center">
+                <SocialMedia />
                 </div>
               </div>
             </div>
