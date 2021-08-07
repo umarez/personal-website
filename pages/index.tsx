@@ -114,8 +114,8 @@ export default function Home() {
                 <Image className='' layout='fill' alt='me' src='/me.svg' />
               </div>
             </div>
-            <motion.div
-              animate={animation}
+            <div
+              // animate={animation}
               className='max-w-screen-2xl flex flex-col items-center mt-12 mb-20 md:mb-32'
             >
               <h1 className=' lg:leading-9 lg:text-xl'>
@@ -126,7 +126,7 @@ export default function Home() {
                 committees as a web developer. My interest in technology has
                 driven me to be a guy who never stops learning.
               </h1>
-            </motion.div>
+            </div>
             <h1 className='text-center md:hidden font-semibold -translate-y-5'>
               Connect with me
             </h1>
@@ -171,7 +171,9 @@ export default function Home() {
         </h1>
         <div >
           <div className='flex flex-col'>
-            <motion.div className='flex flex-col' animate={animation2}>
+            <div className='flex flex-col'
+            //  animate={animation2}
+             >
               <div className='flex flex-col items-center'>
                 <h1 className='text-center text-xl 2xl:text-2xl text-experience pb-2'>
                   Organizational
@@ -237,7 +239,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             <div
               style={{
