@@ -20,6 +20,8 @@ import {
   experienceAnimation,
 } from "../component/animation/animation";
 
+import Head from 'next/head'
+
 export default function Home() {
   const [session, loading] = useSession();
 
@@ -65,6 +67,10 @@ export default function Home() {
 
   return (
     <>
+    <Head>
+    <title>Hi! My Name is Umar</title>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    </Head>
       <div
         className='w-[100vw] h-[100vh] font-inconsolata flex justify-center flex-col pt-5'
         style={{
