@@ -39,7 +39,7 @@ const Experiences = () => {
           <Image src='/dot.svg' width={28} height={28} />
         </div>
         <h1 className='text-white 2xl:text-xl pt-3'>
-          Person In Charge Betis 2022
+          Person In Charge Web Development Betis 2022
         </h1>
         <h1 className='text-sm 2xl:text-base text-alternate'>
           Lead Betis 2022 web development team.
