@@ -2,9 +2,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { project } from "./Project";
-import { projectType } from "./Type/ProjectType";
 import { motion } from "framer-motion";
-import { container, item } from "./animation/animation";
+import { container, item } from "../constant/animation/animation";
 
 export const Projects = () => {
   const { ref: ref, inView: projectView } = useInView({
@@ -71,20 +70,7 @@ export const Projects = () => {
           );
         })}
       </motion.div>
-      <h1 className='text-2xl text-white pt-10 pb-10 text-center'>
-        Coming Soon
-      </h1>
-      <div className='flex flex-col items-center'>
-        <Image
-          src='/e-voting.svg'
-          quality={100}
-          width={214}
-          height={214}
-          objectFit='cover'
-          alt='e-voting'
-        />
-        <h1 className='text-white pt-2'>E-Voting</h1>
-      </div>
+
     </div>
   );
 };

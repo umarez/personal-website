@@ -1,4 +1,4 @@
-import { projectType } from "./Type/ProjectType";
+import { projectType } from "../constant/Type/Type";
 
 export const project: Array<projectType> = [
     {

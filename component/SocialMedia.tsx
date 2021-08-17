@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { images, sourceImage } from "./source";
+import { images, sourceImage } from "../constant/socialMedia/source";
 
 const Media = ({ src, href, width, height }: sourceImage) => {
   return (

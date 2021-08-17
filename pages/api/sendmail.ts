@@ -1,4 +1,3 @@
-
 export default function async(req: any, res: any) {
   let nodemailer = require("nodemailer");
   const transporter = nodemailer.createTransport({
@@ -13,22 +12,6 @@ export default function async(req: any, res: any) {
       rejectUnauthorized: false,
     },
   });
-  //   let transporter = nodemailer.createTransport({
-  //     service: "gmail",
-  //     port: 465,
-  //     auth: {
-  //       type: "OAuth2",
-  //       user: process.env.MAIL_USERNAME,
-  //       pass: process.env.MAIL_PASSWORD,
-  //       clientId: process.env.GOOGLE_CLIENT_ID,
-  //       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  //       refreshToken: process.env.REFRESH_TOKEN,
-  //     },
-  //     tls: {
-  //         rejectUnauthorized: false
-  //     },
-  //     secure: false,
-  //   });
 
   let mailOptions = {
     from: `umar.website.bot@gmail.com`,
@@ -40,13 +23,13 @@ export default function async(req: any, res: any) {
   };
 
   transporter.sendMail(mailOptions, function (err: any, data: any) {
-    console.log(req.body)
+    console.log(req.body);
     if (err || req.body.email == undefined) {
       console.log("Error " + err);
-      res.send(err).status(400)
+      res.send(err).status(400);
     } else {
       console.log("Email sent successfully");
-      res.send("Email sent successfully").status(200)
+      res.send("Email sent successfully").status(200);
     }
   });
 

@@ -4,3 +4,8 @@ export type projectType = {
   desc: string;
   style?: string;
 };
+
+export type experienceType = {
+  title: string;
+  description: string;
+}

@@ -5,7 +5,7 @@ import { signIn, signOut, useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 import { SendMail } from "../component/SendEmail";
 import Experiences from "../component/Experiences";
-import SocialMedia from "../component/socialMedia/SocialMedia";
+import SocialMedia from "../component/SocialMedia";
 import { Skills } from "../component/Skills";
 import { Projects } from "../component/Projects";
 import { ButtonsNavigation } from "../component/ButtonsNavigation";
@@ -18,9 +18,9 @@ import {
   dissapearLeft,
   dissapearScale,
   experienceAnimation,
-} from "../component/animation/animation";
+} from "../constant/animation/animation";
 
-import Head from 'next/head'
+import Head from "next/head";
 
 export default function Home() {
   const [session, loading] = useSession();
@@ -67,10 +67,10 @@ export default function Home() {
 
   return (
     <>
-    <Head>
-    <title>Hi! My Name is Umar</title>
-    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    </Head>
+      <Head>
+        <title>Hi! My Name is Umar</title>
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      </Head>
       <div
         className='w-[100vw] h-[100vh] font-inconsolata flex justify-center flex-col pt-5'
         style={{
@@ -101,7 +101,7 @@ export default function Home() {
         </div>
       </div>
       <div
-        className='w-[100vw] min-h-[100vh] relative px-5 lg:px-32 '
+        className='w-[100vw] min-h-[100vh] pb-10 lg:pb-0 relative px-5 lg:px-32 lg:min-h-[80vh]'
         style={{
           background:
             "linear-gradient(180deg, rgba(19, 31, 48, 0.96) 0%, rgba(37, 37, 37, 1) 100%)",
@@ -120,10 +120,7 @@ export default function Home() {
                 <Image className='' layout='fill' alt='me' src='/me.svg' />
               </div>
             </div>
-            <div
-              // animate={animation}
-              className='max-w-screen-2xl flex flex-col items-center mt-12 mb-20 md:mb-32'
-            >
+            <div className='max-w-screen-2xl flex flex-col items-center mt-12 mb-20 md:mb-32'>
               <h1 className=' lg:leading-9 lg:text-xl'>
                 Hello, I&apos;m Umar Izzuddin! Universitas Indonesia Computer
                 Science&apos;s student who passionate about IT Development.
@@ -131,8 +128,9 @@ export default function Home() {
                 I&apos;m also active in campus organizations and several
                 committees as a web developer. My interest in technology has
                 driven me to be a guy who never stops learning. I also have
-                interest in music and film. Currently active in web development as full stack developer
-                with latest technology such as Next.js, Graphql, AWS, Docker and many more! 
+                interest in music and film. Currently active in web development
+                as full stack developer with latest technology such as Next.js,
+                Graphql, AWS, Docker and many more!
               </h1>
             </div>
             <h1 className='text-center md:hidden font-semibold -translate-y-5'>
@@ -140,7 +138,9 @@ export default function Home() {
             </h1>
             <div className='flex text-lg items-center justify-center md:justify-between'>
               <div className='flex items-center justify-center pb-5 md:pb-0'>
-                <h1 className='hidden md:block md:mr-10 lg:mr-0 xl:mr-20'>Connect With me : </h1>
+                <h1 className='hidden md:block md:mr-10 lg:mr-0 xl:mr-20'>
+                  Connect With me :{" "}
+                </h1>
                 <SocialMedia />
               </div>
               <div
@@ -186,7 +186,7 @@ export default function Home() {
               className='flex flex-col'
               //  animate={animation2}
             >
-              <div className='flex flex-col items-center'>
+              <div className='flex flex-col items-center '>
                 <h1 className='text-center text-xl 2xl:text-2xl text-experience pb-2'>
                   Organizational
                 </h1>
@@ -197,11 +197,9 @@ export default function Home() {
                   }}
                   className='w-32 2xl:w-44 h-2 shadow-md'
                 />
-                <div className='flex pt-5 text'>
-                  <span className='bg-white w-1 mx-5 ' />
-                  <div className='absolute left-1.5 translate-y-2 md:hidden'>
-                    <Image src='/dot.svg' width={28} height={28} />
-                  </div>
+                <div className='flex pt-5 text mx-1 xl:max-w-[50%]'>
+                  <span className='bg-white w-1 mx-3 ' />
+
                   <div className='flex-col'>
                     <h1 className='text-white 2xl:text-xl pb-2'>
                       CS UI Executive Student Council 2021 (BEM Fasilkom UI)
@@ -257,7 +255,6 @@ export default function Home() {
               style={{
                 background: "linear-gradient(180deg, #252525 0%, #1F2433 100%)",
               }}
-              className='min-h-[100vh] '
               ref={projectRef}
             >
               <Projects />
@@ -317,8 +314,8 @@ export default function Home() {
                 </div>
               </div>
               <div className='w-full flex justify-center items-center mt-20 pb-20'>
-                <div className="flex items-center">
-                <SocialMedia />
+                <div className='flex items-center'>
+                  <SocialMedia />
                 </div>
               </div>
             </div>
