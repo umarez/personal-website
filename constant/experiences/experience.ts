@@ -4,7 +4,7 @@ export const experiences: Array<experienceType> = [
   {
     title: "Staff of Web Development at Betis UI 2021",
     description:
-      "Staff of Project Development Division (Bismit), working on various web development project requested from inside/outside of campus",
+      "Fullstack Developer at Betis UI 2021, a platform for highschool student on preparing uni acceptence test. Using Next.js - Typescript and Hasura Grapqhl as the main tech stack.",
   },
   {
     title: "Staff of Web Development at Pesta Rakyat Komputer (PERAK) 2021",

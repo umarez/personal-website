@@ -15,14 +15,14 @@ const Media = ({ src, href, width, height }: sourceImage) => {
 const SocialMedia = () => {
   return (
     <>
-      {images.map((e, i) => {
+      {images.map(({src, href, width, height}, i) => {
         return (
           <div key={i}  className={i == 2 ? "pt-1 px-1 md:px-3 lg:px-7": "px-3 md:px-5 lg:px-10"}>
             <Media
-              src={e.src}
-              href={e.href}
-              width={e.width}
-              height={e.height}
+              src={src}
+              href={href}
+              width={width}
+              height={height}
             />
           </div>
         );

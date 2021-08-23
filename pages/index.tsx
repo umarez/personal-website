@@ -125,12 +125,12 @@ export default function Home() {
                 Hello, I&apos;m Umar Izzuddin! Universitas Indonesia Computer
                 Science&apos;s student who passionate about IT Development.
                 I&apos;m a self-learner, a hard worker, and an ambitious person.
-                I&apos;m also active in campus organizations and several
-                committees as a web developer. My interest in technology has
-                driven me to be a guy who never stops learning. I also have
-                interest in music and film. Currently active in web development
-                as full stack developer with latest technology such as Next.js,
-                Graphql, AWS, Docker and many more!
+                I have deep interest in music, film, and video games. I&apos;m
+                also active in campus organizations and several committees as a
+                web developer. Currently active in web development as full stack
+                developer with latest technology such as Next.js, Graphql, AWS,
+                Docker and many more! My interest in technology has driven me to
+                be a guy who never stops learning.
               </h1>
             </div>
             <h1 className='text-center md:hidden font-semibold -translate-y-5'>
@@ -241,9 +241,7 @@ export default function Home() {
                   className='w-32 h-2 shadow-md'
                 />
                 <div className='w-full pt-5 flex justify-center min-h-[20rem] '>
-                  <div
-                    className='w-4/5 pt-10  bg-white shadow-blue pb-10 max-w-xs md:max-w-lg lg:max-w-2xl min-h-[18rem]'
-                  >
+                  <div className='w-4/5 pt-10  bg-white shadow-blue pb-10 max-w-xs md:max-w-lg lg:max-w-2xl min-h-[18rem]'>
                     <Skills />
                   </div>
                 </div>
