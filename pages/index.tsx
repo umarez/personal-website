@@ -197,7 +197,7 @@ export default function Home() {
                   }}
                   className='w-32 2xl:w-44 h-2 shadow-md'
                 />
-                <div className='flex pt-5 text mx-1 xl:max-w-[50%]'>
+                <div className='flex pt-5 text mx-1 lg:max-w-[70%] xl:max-w-[50%]'>
                   <span className='bg-white w-1 mx-3 ' />
 
                   <div className='flex-col'>
@@ -240,10 +240,9 @@ export default function Home() {
                   }}
                   className='w-32 h-2 shadow-md'
                 />
-                <div className='w-full pt-5 flex justify-center h-80 '>
+                <div className='w-full pt-5 flex justify-center min-h-[20rem] '>
                   <div
-                    className='w-4/5 pt-10  bg-white shadow-blue pb-10 max-w-xs h-72'
-                    style={{ maxWidth: "280px" }}
+                    className='w-4/5 pt-10  bg-white shadow-blue pb-10 max-w-xs md:max-w-lg lg:max-w-2xl min-h-[18rem]'
                   >
                     <Skills />
                   </div>

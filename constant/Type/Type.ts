@@ -9,3 +9,9 @@ export type experienceType = {
   title: string;
   description: string;
 }
+
+export type skillsType = {
+  src: string;
+  alt: string;
+  className? : string;
+}

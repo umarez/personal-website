@@ -1,38 +1,32 @@
+import { skillsIcon, skillsIconTech } from "../constant/skills";
+
 export const Skills = () => {
   return (
     <>
-      <h1 className='underline pl-2 pb-2 text-lg text-center'>
-        Programming language
-      </h1>
-      <ul className='list-disc'>
-        <div className='flex justify-center'>
-          <div className='mr-10'>
-            <li>Python</li>
-            <li>Java</li>
-          </div>
-          <div>
-            <li>Javascript</li>
-            <li>Typescript</li>
+      <div className='mb-10'>
+        <h1 className='underline pl-2 pb-2 text-lg text-center mb-5'>
+          Programming language
+        </h1>
+        <div className='flex flex-wrap gap-x-5 gap-y-5 lg:gap-x-10 justify-center'>
+          {skillsIcon.map(({ src, alt }) => {
+            return <img key='alt' className="hover:scale-110" src={src} alt={alt} />;
+          })}
+        </div>
+      </div>
+      <div>
+        <h1 className='underline pl-2 pb-2 text-lg text-center mb-5'>
+          Daily Tech Stack
+        </h1>
+        <div>
+          <div className='flex flex-wrap gap-x-10 gap-y-2 justify-center'>
+            {skillsIconTech.map(({ src, alt }) => {
+              return (
+                <img key='alt' className="hover:scale-110 " src={src} alt={alt}  />
+              );
+            })}
           </div>
         </div>
-      </ul>
-      <h1 className='underline pl-2 pb-2 pt-5 text-lg text-center'>
-        Daily Tech Stack
-      </h1>
-      <ul className='list-disc '>
-        <div className='flex justify-center'>
-          <div className='mr-10'>
-            <li>Node</li>
-            <li>Postgresql</li>
-            <li>Next.js</li>
-          </div>
-          <div>
-            <li>Apollo</li>
-            <li>Docker</li>
-            <li>Git</li>
-          </div>
-        </div>
-      </ul>
+      </div>
     </>
   );
 };
