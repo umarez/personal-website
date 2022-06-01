@@ -109,7 +109,7 @@ export default function Home() {
         <div ref={aboutRef} className='flex justify-center '>
           <div
             ref={ref1}
-            className='w-full pt-12 text-[#B7B6B6] 2xl:container  flex justify-center'
+            className='w-full pt-12 text-[#B7B6B6] 2xl:container  flex flex-col md:flex-row justify-center'
           >
             <div className='max-w-screen-xl'>
               <h1 className='w-full text-center text-[#D9D9DB] text-3xl md:text-4xl mb-10'>
@@ -158,7 +158,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className='flex justify-center items-center md:hidden pl-3 bg-red-700 '>
+            <div className='flex justify-center items-center md:hidden pl-3 '>
               <div
                 onClick={() => {
                   experienceRef.current?.scrollIntoView();
