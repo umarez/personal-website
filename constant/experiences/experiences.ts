@@ -1,6 +1,24 @@
 import { IExperience } from "@constant/interface/interface";
 
-export const EXPERIENCES: IExperience[] = [
+export const WORKEXPERIENCE: IExperience[] = [
+  {
+    title: "Frontend Developer, SIMAKARA.id learning platform",
+    description:
+      "Main frontend engineer for creating Bimbel SIMAKARA.id learning platform. The website consist of Tryout system, Course, Absensi, Student Registration and Authentication",
+    link: "https://education.simakara.id",
+    type: "Freelance",
+  },
+  {
+    title: "Frontend Developer, SIMAKARA.id learning platform",
+    description:
+      "Main frontend engineer for creating Bimbel SIMAKARA.id learning platform. The website consist of Tryout system, Course, Absensi, Student Registration and Authentication",
+    link: "https://sabilamall.co.id",
+    type: "Freelance",
+  },
+  
+];
+
+export const EXPERIENCE: IExperience[] = [
   {
     title: "Manager of IT Development Division, Pesta Rakyat Komputer 2022",
     description:
@@ -24,5 +42,14 @@ export const EXPERIENCES: IExperience[] = [
     title: "Staff of Web Development at Open House Fasilkom 2022",
     description:
       "Fullstack Developer. Work with Prisma graphql for backend backbones and Next.js as frontend main framework",
+  },
+];
+
+export const ORGANIZATION: IExperience[] = [
+  {
+    title:
+      "Head of Business and Project Management Division, BEM Fakultas Ilmu Komputer Universitas Indonesia",
+    description:
+      "Built web applications based on client requests (projects) using latest tech stacks such as Next.js, Django, Nest.js, Golang, Docker",
   },
 ];

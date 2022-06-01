@@ -9,6 +9,7 @@ export interface IExperience {
   title: string;
   description: string;
   link?: string;
+  type?: string;
 }
 
 export type ISkillDetail = {

@@ -21,8 +21,7 @@ import {
   DISSAPEAR_SCALE,
   EXPERIENCE_ANIMATION,
 } from "../constant/animation/animation";
-import { EXPERIENCES } from "../constant/experiences/experience";
-import { ORGANIZATION } from "../constant/experiences/organization";
+import { EXPERIENCE, ORGANIZATION, WORKEXPERIENCE } from "../constant/experiences/experiences";
 import { Title } from "../component/Title";
 
 const TYPWRITER_CONFIG = {
@@ -192,11 +191,12 @@ export default function Home() {
           Experiences
         </h1>
         <div>
-          <div className='flex flex-col items-center'>
+          <div className='flex flex-col items-center space-y-10'>
+            <Experiences experiences={WORKEXPERIENCE} title={"Work Experience"} />
             <Experiences experiences={ORGANIZATION} title={"Organization"} />
-            <div className='pt-10 xl:pt-20'>
-              <Experiences experiences={EXPERIENCES} title={"Committees"} />
-            </div>
+            <Experiences experiences={EXPERIENCE} title={"Committees"} />
+          </div>
+          <div>
             <Title title='Skills' />
             <div className='w-full pt-5 flex justify-center min-h-[20rem] '>
               <div className='w-4/5 pt-10 bg-white shadow-blue pb-10 max-w-xs md:max-w-lg lg:max-w-2xl min-h-[18rem]'>
