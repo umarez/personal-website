@@ -11,6 +11,22 @@ class MyDocument extends Document {
             content='7519284269-te4q19eijdqg7npp9ub5v2pj5khi0bm1.apps.googleusercontent.com'
           ></meta>
           <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTIC}`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTIC}', {
+              page_path: window.location.pathname,
+            });
+          `,
+            }}
+          />
+          <script
             src='https://apis.google.com/js/platform.js'
             async
             defer
