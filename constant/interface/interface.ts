@@ -8,10 +8,11 @@ export type IProjects = {
 export interface IExperience {
   title: string;
   description: string;
+  link?: string;
 }
 
 export type ISkillDetail = {
   src: string;
   alt: string;
-  className? : string;
-}
+  className?: string;
+};

@@ -64,15 +64,12 @@ export default function Home() {
     } else {
       animation.start(DISSAPEAR_LEFT);
     }
-  }, [aboutView]);
-
-  useEffect(() => {
     if (experienceView) {
       animation2.start(EXPERIENCE_ANIMATION);
     } else {
       animation2.start(DISSAPEAR_SCALE);
     }
-  }, [experienceView]);
+  }, [aboutView, experienceView]);
 
   return (
     <>
