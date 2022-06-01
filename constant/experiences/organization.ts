@@ -3,8 +3,8 @@ import { IExperience } from "@constant/interface/interface";
 
 export const ORGANIZATION: IExperience[] = [
   {
-    title: "Staff of Web Development at Betis UI 2021",
+    title: "Head of Business and Project Management Division, BEM Fakultas Ilmu Komputer Universitas Indonesia",
     description:
-      "Fullstack Developer at Betis UI 2021, a platform for highschool student on preparing uni acceptence test. Using Next.js - Typescript and Hasura Grapqhl as the main tech stack.",
+      "Built web applications based on client requests (projects) using latest stacks such as Next.js, Django, Nest.js, Golang, Docker",
   },
 ];
