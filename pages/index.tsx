@@ -7,20 +7,23 @@ import { SendMail } from "../component/SendEmail";
 import Experiences from "../component/Experiences";
 import SocialMedia from "../component/SocialMedia";
 import { Skills } from "../component/Skills";
-import { Projects } from "../component/Projects";
+import { Projects } from "../component/projects/Projects";
 import { ButtonsNavigation } from "../component/ButtonsNavigation";
 import { useState } from "react";
 import { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import {
-  aboutAnimation,
-  dissapearLeft,
-  dissapearScale,
-  experienceAnimation,
-} from "../constant/animation/animation";
 
 import Head from "next/head";
+import {
+  ABOUT_ANIMATION,
+  DISSAPEAR_LEFT,
+  DISSAPEAR_SCALE,
+  EXPERIENCE_ANIMATION,
+} from "../constant/animation/animation";
+import { EXPERIENCES } from "../constant/experiences/experience";
+import { ORGANIZATION } from "../constant/experiences/organization";
+import { Title } from "../component/Title";
 
 export default function Home() {
   const [session, loading] = useSession();
@@ -51,17 +54,17 @@ export default function Home() {
 
   useEffect(() => {
     if (aboutView) {
-      animation.start(aboutAnimation);
+      animation.start(ABOUT_ANIMATION);
     } else {
-      animation.start(dissapearLeft);
+      animation.start(DISSAPEAR_LEFT);
     }
   }, [aboutView]);
 
   useEffect(() => {
     if (experienceView) {
-      animation2.start(experienceAnimation);
+      animation2.start(EXPERIENCE_ANIMATION);
     } else {
-      animation2.start(dissapearScale);
+      animation2.start(DISSAPEAR_SCALE);
     }
   }, [experienceView]);
 
@@ -181,139 +184,72 @@ export default function Home() {
           Experiences
         </h1>
         <div>
-          <div className='flex flex-col'>
-            <div
-              className='flex flex-col'
-              //  animate={animation2}
-            >
-              <div className='flex flex-col items-center '>
-                <h1 className='text-center text-xl 2xl:text-2xl text-experience pb-2'>
-                  Organizational
-                </h1>
-                <span
-                  style={{
-                    background:
-                      "linear-gradient(180deg, #425F65 54.78%, rgba(100, 113, 151, 0.74) 154.78%)",
-                  }}
-                  className='w-32 2xl:w-44 h-2 shadow-md'
-                />
-                <div className='flex pt-5 text mx-1 lg:max-w-[70%] xl:max-w-[50%]'>
-                  <span className='bg-white w-1 mx-3 ' />
+          <div className='flex flex-col items-center'>
+            <Experiences experiences={ORGANIZATION} title={"Organization"} />
+            <div className='pt-10 xl:pt-20'>
+              <Experiences experiences={EXPERIENCES} title={"Committees"} />
+            </div>
 
-                  <div className='flex-col'>
-                    <h1 className='text-white 2xl:text-xl pb-2'>
-                      CS UI Executive Student Council 2021 (BEM Fasilkom UI)
-                    </h1>
-                    <h1 className='text-sm 2xl:text-base text-alternate'>
-                      Staff of Project Development Division (Bismit), working on
-                      various web development project requested from
-                      inside/outside of campus
-                    </h1>
+            <div className='flex flex-col items-center pt-10 '>
+              <Title title='Skills' />
+              <div className='w-full pt-5 flex justify-center min-h-[20rem] '>
+                <div className='w-4/5 pt-10 bg-white shadow-blue pb-10 max-w-xs md:max-w-lg lg:max-w-2xl min-h-[18rem]'>
+                  <Skills />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style={{
+              background: "linear-gradient(180deg, #252525 0%, #1F2433 100%)",
+            }}
+            ref={projectRef}
+          >
+            <Projects />
+          </div>
+
+          <div
+            className='min-h-[50vh] text-white '
+            style={{
+              background: "linear-gradient(180deg, #202531 0%, #030303 100%)",
+            }}
+          >
+            <div className='flex w-full justify-center items-center relative'>
+              <div className='w-11/12 mt-44' ref={connectRef}>
+                <h1 className='text-xl pb-5 2xl:text-3xl md:mb-10'>
+                  Reach Me :
+                </h1>
+                <div className='flex flex-col md:flex-row justify-between'>
+                  <div className='flex items-center'>
+                    <Image src='/mail.svg' width={44} height={44} alt='mail' />
+                    <h1 className='text-xl pl-3'>izzuddinumar13@gmail.com</h1>
                   </div>
-                </div>
-              </div>
-
-              <div className='pt-10 xl:pt-20'>
-                <div className='flex flex-col items-center'>
-                  <h1 className='text-center text-xl 2xl:text-2xl text-experience pb-2'>
-                    Committees
-                  </h1>
-                  <span
-                    style={{
-                      background:
-                        "linear-gradient(180deg, #425F65 54.78%, rgba(100, 113, 151, 0.74) 154.78%)",
-                    }}
-                    className='w-32 2xl:w-44 h-2 shadow-md'
-                  />
-                  <Experiences />
-                </div>
-              </div>
-
-              <div className='flex flex-col items-center pt-10 '>
-                <h1 className='text-center text-3xl text-experience pb-2'>
-                  Skills
-                </h1>
-                <span
-                  style={{
-                    background:
-                      "linear-gradient(180deg, #425F65 54.78%, rgba(100, 113, 151, 0.74) 154.78%)",
-                  }}
-                  className='w-32 h-2 shadow-md'
-                />
-                <div className='w-full pt-5 flex justify-center min-h-[20rem] '>
-                  <div className='w-4/5 pt-10  bg-white shadow-blue pb-10 max-w-xs md:max-w-lg lg:max-w-2xl min-h-[18rem]'>
-                    <Skills />
+                  <div className='flex items-center justify-between md:justify-center pt-10 md:pt-0'>
+                    <h1 className='text-lg pr-10'>Say Hi To Me!</h1>
+                    <div
+                      onClick={() => {
+                        if (!session) {
+                          signIn("google", {
+                            callbackUrl: `${window.location.origin}/?sendMail=true`,
+                          });
+                        } else {
+                          setFrom(session?.user?.email);
+                          router.push("/?sendMail=true", undefined, {
+                            shallow: true,
+                          });
+                        }
+                      }}
+                    >
+                      <SendMail />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-
-            <div
-              style={{
-                background: "linear-gradient(180deg, #252525 0%, #1F2433 100%)",
-              }}
-              ref={projectRef}
-            >
-              <Projects />
-            </div>
-
-            <div
-              className='min-h-[50vh] text-white '
-              style={{
-                background: "linear-gradient(180deg, #202531 0%, #030303 100%)",
-              }}
-            >
-              <div className='flex w-full justify-center items-center relative'>
-                <div className='w-11/12 mt-44' ref={connectRef}>
-                  <h1 className='text-xl pb-5 2xl:text-3xl md:mb-10'>
-                    Reach Me :
-                  </h1>
-                  <div className='flex flex-col md:flex-row justify-between'>
-                    <div className='flex items-center'>
-                      <Image
-                        src='/mail.svg'
-                        width={44}
-                        height={44}
-                        alt='mail'
-                      />
-                      <h1 className='text-xl pl-3'>izzuddinumar13@gmail.com</h1>
-                    </div>
-                    <div className='flex items-center flex justify-between md:justify-center pt-10 md:pt-0'>
-                      <h1 className='text-lg pr-10'>Say Hi To Me!</h1>
-                      <div
-                        onClick={() => {
-                          if (!session) {
-                            signIn("google", {
-                              callbackUrl: process.env.PRODUCTION
-                                ? "https://umarizzuddin.com/?sendMail=true"
-                                : "http://localhost:3000/?sendMail=true",
-                            });
-                          } else {
-                            // console.log(session?.user);
-                            setFrom(session?.user?.email);
-                            router.push("/?sendMail=true", undefined, {
-                              shallow: true,
-                            });
-                          }
-                        }}
-                      >
-                        <SendMail />
-                      </div>
-                    </div>
-                  </div>
-                  {/* <button
-                  onClick={() => {
-                    signOut();
-                  }}
-                >
-                  <h1>Log out</h1>
-                </button> */}
-                </div>
-              </div>
-              <div className='w-full flex justify-center items-center mt-20 pb-20'>
-                <div className='flex items-center'>
-                  <SocialMedia />
-                </div>
+            <div className='w-full flex justify-center items-center mt-20 pb-20'>
+              <div className='flex items-center'>
+                <SocialMedia />
               </div>
             </div>
           </div>

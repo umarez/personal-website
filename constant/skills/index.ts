@@ -1,6 +1,6 @@
-import { skillsType } from "../Type/Type";
+import { ISkillDetail } from "@constant/interface/interface";
 
-export const skillsIcon: Array<skillsType> = [
+export const skillsIcon: ISkillDetail[] = [
   {
     src: "/python-icon.svg",
     alt: "Python",
@@ -19,7 +19,7 @@ export const skillsIcon: Array<skillsType> = [
   },
 ];
 
-export const skillsIconTech: Array<skillsType> = [
+export const skillsIconTech: ISkillDetail[] = [
   {
     src: "/reactjs-icon.svg",
     alt: "Python",
@@ -37,19 +37,19 @@ export const skillsIconTech: Array<skillsType> = [
     alt: "Javascript",
   },
   {
-    src: '/postgresql-icon.svg',
+    src: "/postgresql-icon.svg",
     alt: "Postgresql",
   },
   {
-    src: '/hasuraio-icon.svg',
+    src: "/hasuraio-icon.svg",
     alt: "Hasura",
   },
   {
-    src: '/docker-icon.svg',
+    src: "/docker-icon.svg",
     alt: "Docker",
   },
   {
-    src: '/aws-icon.svg',
+    src: "/aws-icon.svg",
     alt: "AWS",
   },
 ];

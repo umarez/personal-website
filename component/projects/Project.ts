@@ -1,6 +1,7 @@
-import { projectType } from "../constant/Type/Type";
+import { IProjects } from "@constant/interface/interface";
 
-export const project: Array<projectType> = [
+
+export const project: IProjects[] = [
     {
       src: "/todo.png",
       desc: "Todo Organizer",

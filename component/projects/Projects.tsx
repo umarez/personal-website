@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { project } from "./Project";
 import { motion } from "framer-motion";
-import { container, item } from "../constant/animation/animation";
+import { CONTAINER, ITEM } from "@constant/animation/animation";
+
 
 export const Projects = () => {
   const { ref: ref, inView: projectView } = useInView({
@@ -21,18 +22,18 @@ export const Projects = () => {
 
   return (
     <div ref={ref}>
-      <h1 className='text-4xl text-[#D9D9DB] text-center text-white pt-10 pb-10'>
+      <h1 className='text-4xl text-[#D9D9DB] text-center pt-10 pb-10'>
         Personal Project
       </h1>
       <motion.div
-        variants={container}
+        variants={CONTAINER}
         animate={vars ? "show" : "hidden"}
         className='flex flex-col md:flex-row items-center justify-center'
       >
         {project.map((e, i) => {
           return (
             <motion.div
-              variants={item}
+              variants={ITEM}
               animate={vars ? "show" : "hidden"}
               className='pb-10 mx-5'
               key={i}

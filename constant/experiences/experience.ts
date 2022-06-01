@@ -1,6 +1,7 @@
-import { experienceType } from "../Type/Type";
+import { IExperience } from "@constant/interface/interface";
 
-export const experiences: Array<experienceType> = [
+
+export const EXPERIENCES: IExperience[] = [
   {
     title: "Staff of Web Development at Betis UI 2021",
     description:

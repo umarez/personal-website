@@ -1,4 +1,4 @@
-const aboutAnimation = {
+export const ABOUT_ANIMATION = {
   x: 0,
   transition: {
     type: "spring",
@@ -7,11 +7,11 @@ const aboutAnimation = {
   },
 };
 
-const dissapearLeft = {
+export const DISSAPEAR_LEFT = {
   x: "-20%",
 };
 
-const experienceAnimation = {
+export const EXPERIENCE_ANIMATION = {
   scale: 1,
   x: 0,
   transition: {
@@ -19,11 +19,11 @@ const experienceAnimation = {
   },
 };
 
-const dissapearScale = {
+export const DISSAPEAR_SCALE = {
   scale: 0.8,
 };
 
-const container = {
+export const CONTAINER = {
   hidden: {
     opacity: 0,
   },
@@ -36,15 +36,7 @@ const container = {
   },
 };
 
-const item = {
+export const ITEM = {
   hidden: { opacity: 0 },
   show: { opacity: 1 },
-};
-export {
-  aboutAnimation,
-  dissapearLeft,
-  experienceAnimation,
-  dissapearScale,
-  container,
-  item,
 };

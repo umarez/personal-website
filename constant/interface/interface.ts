@@ -1,16 +1,16 @@
-export type projectType = {
+export type IProjects = {
   src: string;
   alt: string;
   desc: string;
   style?: string;
 };
 
-export type experienceType = {
+export interface IExperience {
   title: string;
   description: string;
 }
 
-export type skillsType = {
+export type ISkillDetail = {
   src: string;
   alt: string;
   className? : string;

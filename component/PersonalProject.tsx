@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { project } from "./Project";
+import { project } from "./projects/Project";
 
 export const PersonalProject = () => {
   return (
