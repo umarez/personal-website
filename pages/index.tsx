@@ -27,7 +27,7 @@ import {
   WORKEXPERIENCE,
 } from "../constant/experiences/experiences";
 import { Title } from "../component/Title";
-import { DocumentIcon, DocumentTextIcon } from "@heroicons/react/solid";
+import { DocumentTextIcon } from "@heroicons/react/solid";
 
 const TYPWRITER_CONFIG = {
   strings: ["Hello I'm Umar!"],
