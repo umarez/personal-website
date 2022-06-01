@@ -21,8 +21,13 @@ import {
   DISSAPEAR_SCALE,
   EXPERIENCE_ANIMATION,
 } from "../constant/animation/animation";
-import { EXPERIENCE, ORGANIZATION, WORKEXPERIENCE } from "../constant/experiences/experiences";
+import {
+  EXPERIENCE,
+  ORGANIZATION,
+  WORKEXPERIENCE,
+} from "../constant/experiences/experiences";
 import { Title } from "../component/Title";
+import { DocumentIcon, DocumentTextIcon } from "@heroicons/react/solid";
 
 const TYPWRITER_CONFIG = {
   strings: ["Hello I'm Umar!"],
@@ -71,25 +76,25 @@ export default function Home() {
   }, [aboutView, experienceView]);
 
   return (
-    <>
+    <div className="overflow-x-hidden">
       <Head>
         <title>Hi! My Name is Umar</title>
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <div
-        className='w-screen h-screen font-inconsolata flex justify-center flex-col pt-5'
+        className='w-screen h-screen font-inconsolata flex justify-center items-center pt-5'
         style={{
           background:
             "linear-gradient(180deg, #501E1E 0%, rgba(19, 31, 48, 0.96) 100%)",
         }}
       >
-        <div className='w-full flex justify-center'>
+        <div className='w-full flex justify-center mx-4'>
           <div className='max-w-screen-xl w-full'>
             <h1 className='text-white text-3xl md:text-5xl lg:text-7xl '>
               <Typewriter options={TYPWRITER_CONFIG} />
             </h1>
-            <h1 className='mt-7 text-[#726886] md:text-2xl lg:text-4xl lg:w-4/5'>
-              Universitas Indonesia student, Software Engineer , IT Enthusiast
+            <h1 className='mt-7 text-[#726886] md:text-2xl lg:text-4xl lg:w-4/5 break-words'>
+              Universitas Indonesia student, Software Engineer, IT Enthusiast
             </h1>
             <ButtonsNavigation
               aboutRef={aboutRef}
@@ -100,7 +105,7 @@ export default function Home() {
         </div>
       </div>
       <div
-        className='w-[100vw] min-h-[100vh] pb-10 lg:pb-0 relative px-5 lg:px-32 lg:min-h-[80vh]'
+        className='w-screen min-h-screen pb-10 lg:pb-0 relative px-5 lg:px-32 lg:min-h-[80vh]'
         style={{
           background:
             "linear-gradient(180deg, rgba(19, 31, 48, 0.96) 0%, rgba(37, 37, 37, 1) 100%)",
@@ -182,82 +187,101 @@ export default function Home() {
       <div
         ref={ref2}
         style={{ backgroundColor: "#252525" }}
-        className='w-full min-h-[100vh]'
+        className='w-full min-h-screen flex justify-center'
       >
-        <h1
-          ref={experienceRef}
-          className='text-4xl text-center text-white pt-10 pb-10'
-        >
-          Experiences
-        </h1>
-        <div>
-          <div className='flex flex-col items-center space-y-10'>
-            <Experiences experiences={WORKEXPERIENCE} title={"Work Experience"} />
-            <Experiences experiences={ORGANIZATION} title={"Organization"} />
-            <Experiences experiences={EXPERIENCE} title={"Committees"} />
-          </div>
+        <div className='max-w-screen-xl'>
+          <h1
+            ref={experienceRef}
+            className='text-4xl text-center text-white pt-10 pb-10'
+          >
+            Experiences
+          </h1>
           <div>
-            <Title title='Skills' />
-            <div className='w-full pt-5 flex justify-center min-h-[20rem] '>
-              <div className='w-4/5 pt-10 bg-white shadow-blue pb-10 max-w-xs md:max-w-lg lg:max-w-2xl min-h-[18rem]'>
-                <Skills />
-              </div>
-            </div>
-          </div>
-
-          <div
-            style={{
-              background: "linear-gradient(180deg, #252525 0%, #1F2433 100%)",
-            }}
-            ref={projectRef}
-          >
-            <Projects />
-          </div>
-
-          <div
-            className='min-h-[50vh] text-white '
-            style={{
-              background: "linear-gradient(180deg, #202531 0%, #030303 100%)",
-            }}
-          >
-            <div className='flex w-full justify-center items-center relative'>
-              <div className='w-11/12 mt-44' ref={connectRef}>
-                <h1 className='text-xl pb-5 2xl:text-3xl md:mb-10'>
-                  Reach Me :
-                </h1>
-                <div className='flex flex-col md:flex-row justify-between'>
-                  <div className='flex items-center'>
-                    <Image src='/mail.svg' width={44} height={44} alt='mail' />
-                    <h1 className='text-xl pl-3'>izzuddinumar13@gmail.com</h1>
-                  </div>
-                  <div className='flex items-center justify-between md:justify-center pt-10 md:pt-0'>
-                    <h1 className='text-lg pr-10'>Say Hi To Me!</h1>
-                    <div
-                      onClick={() => {
-                        if (!session) {
-                          signIn("google", {
-                            callbackUrl: `${window.location.origin}/?sendMail=true`,
-                          });
-                        } else {
-                          setFrom(session?.user?.email);
-                          router.push("/?sendMail=true", undefined, {
-                            shallow: true,
-                          });
-                        }
-                      }}
-                    >
-                      <SendMail />
-                    </div>
-                  </div>
+            <div className='flex flex-col items-center space-y-10'>
+              <div className='w-full pl-3'>
+                <div className='flex space-x-2 items-center'>
+                  <h2 className='font-semibold text-white text-2xl shadow-lg shadow-neutral-300 underline'>
+                    My latest CV:{" "}
+                  </h2>
+                  <a
+                    href='https://docs.google.com/document/d/1k5T3cg86gD8rTDIf5PMOJyCm2VDuCOByYpezwJZe48k/edit?usp=sharing'
+                    target={"_blank"}
+                    rel='noreferrer'
+                  >
+                    <DocumentTextIcon
+                      className='inline text-experience cursor-pointer hover:text-white'
+                      width={32}
+                      height={32}
+                    />{" "}
+                  </a>
                 </div>
               </div>
+              <Experiences
+                experiences={WORKEXPERIENCE}
+                title={"Work Experience"}
+              />
+              <Experiences experiences={ORGANIZATION} title={"Organization"} />
+              <Experiences experiences={EXPERIENCE} title={"Committees"} />
             </div>
-            <div className='w-full flex justify-center items-center mt-20 pb-20'>
-              <SocialMedia />
+            <div className='mb-10'>
+              <Title title='Skills' />
+              <div className='w-full pt-5 flex justify-center min-h-[20rem] '>
+                <div className='w-4/5 pt-10 bg-white shadow-blue pb-10 max-w-xs md:max-w-lg lg:max-w-2xl min-h-[18rem]'>
+                  <Skills />
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </>
+      <div
+        style={{
+          background: "linear-gradient(180deg, #252525 0%, #1F2433 100%)",
+        }}
+        ref={projectRef}
+      >
+        <Projects />
+      </div>
+      <div
+        className='min-h-[50vh] text-white '
+        style={{
+          background: "linear-gradient(180deg, #202531 0%, #030303 100%)",
+        }}
+      >
+        <div className='flex w-full justify-center items-center relative'>
+          <div className='w-11/12 mt-20 md:mt-44' ref={connectRef}>
+            <h1 className='text-xl pb-5 2xl:text-3xl md:mb-10'>Reach Me :</h1>
+            <div className='flex flex-col md:flex-row justify-between'>
+              <div className='flex items-center'>
+                <Image src='/mail.svg' width={44} height={44} alt='mail' />
+                <h1 className='text-xl pl-3'>izzuddinumar13@gmail.com</h1>
+              </div>
+              <div className='flex items-center justify-between md:justify-center pt-10 md:pt-0'>
+                <h1 className='text-lg pr-10'>Say Hi To Me!</h1>
+                <div
+                  onClick={() => {
+                    if (!session) {
+                      signIn("google", {
+                        callbackUrl: `${window.location.origin}/?sendMail=true`,
+                      });
+                    } else {
+                      setFrom(session?.user?.email);
+                      router.push("/?sendMail=true", undefined, {
+                        shallow: true,
+                      });
+                    }
+                  }}
+                >
+                  <SendMail />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className='w-full flex justify-center items-center mt-20 pb-20'>
+          <SocialMedia />
+        </div>
+      </div>
+    </div>
   );
 }
