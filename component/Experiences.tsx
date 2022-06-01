@@ -14,7 +14,7 @@ const Experiences: React.FC<IExperienceProps> = ({ experiences, title }) => {
     <div className=''>
       <Title title={title} />
       <div className='flex pt-5 text mx-1 max-w-screen-md'>
-        <span className='bg-white w-1.5 mx-3 ' />
+        <span className='bg-white min-w-[0.25rem] mx-3 ' />
         <div className='flex-col pt-0.5'>
           {experiences.map(({ title, description, link, type }, i) => {
             return (

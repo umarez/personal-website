@@ -2,20 +2,19 @@ import { IExperience } from "@constant/interface/interface";
 
 export const WORKEXPERIENCE: IExperience[] = [
   {
-    title: "Frontend Developer, SIMAKARA.id learning platform",
+    title: "Frontend Developer, SabilaMall  ",
     description:
-      "Main frontend engineer for creating Bimbel SIMAKARA.id learning platform. The website consist of Tryout system, Course, Absensi, Student Registration and Authentication",
-    link: "https://education.simakara.id",
+      "Work with 5 frontend engineers and 3 UI/UX designers to revamp the old SabilaMall e-Commerce website. Contributed to creating a new, fresh, nice looking, user friendly, and fully responsive website using NextJS and Chakra UI",
+    link: "https://sabilamall.co.id",
     type: "Freelance",
   },
   {
     title: "Frontend Developer, SIMAKARA.id learning platform",
     description:
       "Main frontend engineer for creating Bimbel SIMAKARA.id learning platform. The website consist of Tryout system, Course, Absensi, Student Registration and Authentication",
-    link: "https://sabilamall.co.id",
+    link: "https://education.simakara.id",
     type: "Freelance",
   },
-  
 ];
 
 export const EXPERIENCE: IExperience[] = [
